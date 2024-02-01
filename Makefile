@@ -11,8 +11,7 @@ PUSH_SWAP_SRC_PATH = ./push_swap_utils/
 PUSH_SWAP_INCLUDES = ./includes/push_swap.h
 PUSH_SWAP_OBJ = $(addprefix $(PUSH_SWAP_SRC_PATH), $(PUSH_SWAP_SRCS:.c=.o))
 
-PUSH_SWAP_SRCS = main.c \
-	utils.c
+PUSH_SWAP_SRCS = main.c 
 
 #FLAGS
 FLAGS = -Wall -Werror -Wextra
