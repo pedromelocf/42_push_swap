@@ -32,7 +32,9 @@ SRCS = ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c
+	ft_putnbr_fd.c \
+	ft_strjoin.c \
+	ft_clean_matrix.c
 
 OBJ = $(SRCS:.c=.o)
 INCLUDES = ../libft.h
@@ -48,6 +50,7 @@ MESSAGE5 = "-------------------- Libft Binarie cleaned!------------------"
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@ echo ' '
 	@ echo $(MESSAGE1)
 	@ ar rcs $(NAME) $(OBJ)
 	@ echo ' '

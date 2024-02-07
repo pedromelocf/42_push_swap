@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:04:17 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2023/12/11 15:11:49 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:23:16 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,6 @@ char	*ft_join_buf(char const *s1, char const *s2)
 	}
 	free((char *)s1);
 	return (joined_string);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*newstring;
-	size_t	counter;
-	size_t	s1_len;
-	size_t	s2_len;
-
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	counter = 0;
-	newstring = (char *)malloc(sizeof(char) * s1_len + s2_len + 1);
-	if (newstring == NULL)
-		return (NULL);
-	while (counter < s1_len + s2_len)
-	{
-		if (counter < s1_len)
-			newstring[counter] = s1[counter];
-		if (counter >= s1_len && counter < s1_len + s2_len)
-			newstring[counter] = s2[counter - s1_len];
-		counter++;
-	}
-	newstring[counter] = '\0';
-	return (newstring);
 }
 
 char	*ft_strdup(const char *s)
