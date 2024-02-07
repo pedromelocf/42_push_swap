@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/07 15:53:12 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:19:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_list	*list;
+	int counter = 1;
 
 	if (argc == 1)
 		return (ft_printf("argc invalido\n"));
@@ -22,6 +23,11 @@ int	main(int argc, char **argv)
 	if (!list)
 		return (ft_printf("Elementos da lista invalidos\n"));
 	ft_printf("Good Job :)\n");
-	printf("%d\n", list->value);
+	while(counter < argc)
+	{
+		ft_printf("Element %d from list:%d\n", counter, list->value);
+		counter++;
+		list = list->next;
+	}
 	return (0);
 }
