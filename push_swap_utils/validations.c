@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/07 15:11:20 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/07 15:53:12 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ t_list	*validate_arg(int argc, char **argv)
 {
 	t_list	*v_list;
 
+	v_list = NULL;
 	v_list = new_list(argc, argv);
 	if (!v_list)
-		return(NULL);
-	return(v_list);
+		return (NULL);
+	return (v_list);
 }
 
 t_list	*new_list(int argc, char **argv)
@@ -36,6 +37,6 @@ t_list	*new_list(int argc, char **argv)
 		counter++;
 	}
 	if (!n_list)
-		return(NULL);
-	return(n_list);
+		return (NULL);
+	return (n_list);
 }
