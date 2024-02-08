@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/07 15:53:13 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:24:02 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@
 # include "../lib/libft.h"
 # include "../lib/printf/ft_printf.h"
 
-typedef struct s_list
+typedef struct s_btree
 {
-	struct s_list	*next;
 	int				value;
-}					t_list;
+	int				curr_index;
+	int				beg_index;
+	int				req_index;
+	struct s_btree	*right;
+	struct s_btree	*left;
+}					t_btree;
 
-t_list				*validate_arg(int argc, char **argv);
-t_list				*new_list(int argc, char **argv);
+t_btree				*validate_arg(int argc, char **argv);
+t_btree				*new_tree(int argc, char **argv);
+t_btree				*insert_node(t_btree *head, int value, int counter);
+void				print_in_order(t_btree *head);
 #endif
