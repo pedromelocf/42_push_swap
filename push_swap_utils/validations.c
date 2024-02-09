@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 11:57:43 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:00:49 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,43 +54,4 @@ int	*get_int_argc(int argc, char **argv)
 		c = i - 1;
 	}
 	return(argc_arr);
-}
-
-t_btree	*new_tree(int argc, int *argc_arr)
-{
-	t_btree	*head;
-	int		counter;
-
-	counter = 1;
-	head = NULL;
-	while (counter < argc)
-	{
-		head = insert_node(head, argc_arr[counter], counter);
-		counter++;
-	}
-	return (head);
-}
-
-t_btree	*insert_node(t_btree *btree, int arg, int counter)
-{
-	t_btree *new_node;
-
-	new_node = NULL;
-	if (!btree)
-	{
-		new_node = malloc(sizeof(t_btree));
-		if (!new_node)
-			return(NULL);
-		new_node->value = arg;
-		new_node->curr_index = counter;
-		new_node->beg_index = counter;
-		new_node->left = NULL;
-		new_node->right = NULL;
-		return(new_node);
-	}
-	if (arg < btree->value)
-		btree->left = insert_node(btree->left, arg, counter);
-	else
-		btree->right = insert_node(btree->right, arg, counter);
-	return(btree);
 }
