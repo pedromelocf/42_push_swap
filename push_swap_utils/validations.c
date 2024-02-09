@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 16:00:49 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:15:33 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	*get_int_argc(int argc, char **argv)
 	i = 1;
 	c = 0;
 	error = 0;
-	argc_arr = malloc(sizeof(int) * argc);
+	argc_arr = ft_calloc(argc, sizeof(int));
 	while (i < argc)
 	{
 		ft_atoi_push(argv[i], &error);
