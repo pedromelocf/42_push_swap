@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 16:25:11 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:38:51 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 	btree = validate_arg(argc, argv);
 	if (!btree)
 		return (ft_dprintf(2, "Invalid arguments\n"));
-	ft_printf("Good Job :)\n");
 	clean_tree(btree);
 	return (0);
 }

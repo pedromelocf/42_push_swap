@@ -6,13 +6,13 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 16:26:30 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:15:56 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_btree	*new_tree(int argc, int *argc_arr)
+t_btree	*new_tree(int argc, int *stack_a)
 {
 	t_btree	*head;
 	int		counter;
@@ -21,7 +21,7 @@ t_btree	*new_tree(int argc, int *argc_arr)
 	head = NULL;
 	while (counter < argc)
 	{
-		head = insert_node(head, argc_arr[counter], counter);
+		head = insert_node(head, stack_a[counter], counter);
 		counter++;
 	}
 	return (head);
