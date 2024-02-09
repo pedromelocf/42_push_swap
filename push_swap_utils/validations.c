@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/08 22:53:53 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:27:04 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,18 @@ int	*get_int_argc(int argc, char **argv)
 	argc_arr = malloc(sizeof(int) * argc);
 	while (i < argc)
 	{
-		printf("i: %i\n", i - 1);
 		ft_atoi_push(argv[i], &error);
 		if (error)
 			return(NULL);
-		while (argc + c - 1> argc)
+		while (argc + c > argc)
 		{
-			ft_printf("c :%d\n", c);
-			printf("atoi c : %d\n", ft_atoi(argv[c]));
-			printf("argc_arr : %d\n",argc_arr[0]);
-			if (ft_atoi(argv[c]) == argc_arr[0])
+			if (ft_atoi(argv[i]) == argc_arr[c - 1])
 				return(NULL);
 			c--;
 		}
 		argc_arr[i - 1] = ft_atoi(argv[i]);
 		i++;
 		c = i - 1;
-		printf("\n");
 	}
 	return(argc_arr);
 }
