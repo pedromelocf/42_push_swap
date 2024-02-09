@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 11:30:37 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:57:43 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ t_btree	*new_tree(int argc, int *argc_arr)
 t_btree	*insert_node(t_btree *btree, int arg, int counter)
 {
 	t_btree *new_node;
+
+	new_node = NULL;
 	if (!btree)
 	{
 		new_node = malloc(sizeof(t_btree));

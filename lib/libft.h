@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:08:49 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/08 22:01:46 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:44:26 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	ft_clean_matrix(char **matrix);
+void	ft_clean_arr_int(int *arr);
+void	ft_clean_arr_char(char **arr_char);
 
 #endif

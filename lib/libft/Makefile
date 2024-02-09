@@ -35,7 +35,8 @@ SRCS = ft_isalpha.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	ft_strjoin.c \
-	ft_clean_matrix.c
+	ft_clean_arr_int.c \
+	ft_clean_arr_char.c
 
 OBJ = $(SRCS:.c=.o)
 INCLUDES = ../libft.h

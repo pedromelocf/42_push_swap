@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean_matrix.c                                  :+:      :+:    :+:   */
+/*   ft_clean_arr_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:26:00 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/05 16:26:10 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:45:45 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	clean_matrix(char **matrix)
+void	ft_clean_arr_int(int *arr_int)
 {
-	int	x;
-
-	x = 0;
-	if (!matrix)
-		return ;
-	while (matrix[x])
-		free(matrix[x++]);
-	if (matrix)
-		free(matrix);
+	if (!arr_int)
+		return;
+	if (arr_int)
+		free(arr_int);
 }
