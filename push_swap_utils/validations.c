@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 16:15:33 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:37:37 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_btree	*validate_arg(int argc, char **argv)
 	if (!argc_arr)
 		return(NULL);
 	v_btree = new_tree(argc, argc_arr);
+	ft_clean_arr_int(argc_arr);
 	if (!v_btree)
 		return (NULL);
 	return (v_btree);
@@ -42,11 +43,17 @@ int	*get_int_argc(int argc, char **argv)
 	{
 		ft_atoi_push(argv[i], &error);
 		if (error)
+		{
+			ft_clean_arr_int(argc_arr);
 			return(NULL);
+		}
 		while (argc + c > argc)
 		{
 			if (ft_atoi(argv[i]) == argc_arr[c - 1])
+			{
+				ft_clean_arr_int(argc_arr);
 				return(NULL);
+			}
 			c--;
 		}
 		argc_arr[i - 1] = ft_atoi(argv[i]);

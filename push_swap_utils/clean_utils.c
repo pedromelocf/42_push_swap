@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clean_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 16:25:11 by pmelo-ca         ###   ########.fr       */
+/*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
+/*   Updated: 2024/02/09 16:26:42 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	clean_tree(t_btree *btree)
 {
-	t_btree	*btree;
-
-	if (argc == 1)
-		return (ft_dprintf(2, "Missing arguments\n"));
-	btree = validate_arg(argc, argv);
-	if (!btree)
-		return (ft_dprintf(2, "Invalid arguments\n"));
-	ft_printf("Good Job :)\n");
-	clean_tree(btree);
-	return (0);
+	if(!btree)
+		return;
+	clean_tree(btree->left);
+	clean_tree(btree->right);
+	free(btree);
 }
+
