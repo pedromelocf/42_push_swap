@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/08 15:56:02 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:11:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_btree
 }					t_btree;
 
 t_btree				*validate_arg(int argc, char **argv);
+int	*				get_int_argc(int argc, char **argv);
 t_btree				*new_tree(int argc, char **argv);
 t_btree				*insert_node(t_btree *head, int value, int counter);
 void				print_in_order(t_btree *btree);
