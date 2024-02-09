@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 11:27:04 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:30:37 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_btree	*validate_arg(int argc, char **argv)
 	argc_arr = get_int_argc(argc, argv);
 	if (!argc_arr)
 		return(NULL);
-	v_btree = new_tree(argc, argv);
+	v_btree = new_tree(argc, argc_arr);
 	if (!v_btree)
 		return (NULL);
 	return (v_btree);
@@ -56,7 +56,7 @@ int	*get_int_argc(int argc, char **argv)
 	return(argc_arr);
 }
 
-t_btree	*new_tree(int argc, char **argv)
+t_btree	*new_tree(int argc, int *argc_arr)
 {
 	t_btree	*head;
 	int		counter;
@@ -65,7 +65,7 @@ t_btree	*new_tree(int argc, char **argv)
 	head = NULL;
 	while (counter < argc)
 	{
-		head = insert_node(head, ft_atoi(argv[counter]), counter);
+		head = insert_node(head, argc_arr[counter], counter);
 		counter++;
 	}
 	return (head);
