@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 16:26:00 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 11:45:45 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:23:55 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_clean_arr_int(int *arr_int)
 {
 	if (!arr_int)
-		return;
+		return ;
 	if (arr_int)
 		free(arr_int);
 }

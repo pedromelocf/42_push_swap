@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 16:26:42 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:24:48 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	clean_tree(t_btree *btree)
 {
-	if(!btree)
-		return;
+	if (!btree)
+		return ;
 	clean_tree(btree->left);
 	clean_tree(btree->right);
 	free(btree);
 }
-

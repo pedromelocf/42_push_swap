@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/19 14:11:18 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:24:12 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_btree	*validate_arg(int argc, char **argv)
 	btree = NULL;
 	stack_a = get_int_argc(argc, argv);
 	if (!stack_a)
-		return(NULL);
+		return (NULL);
 	btree = new_tree(argc, stack_a);
 	if (!btree)
 		return (NULL);
@@ -30,9 +30,9 @@ t_btree	*validate_arg(int argc, char **argv)
 int	*get_int_argc(int argc, char **argv)
 {
 	int	*stack_a;
-	int		i;
-	int		c;
-	int		error;
+	int	i;
+	int	c;
+	int	error;
 
 	i = 1;
 	c = 0;
@@ -44,14 +44,14 @@ int	*get_int_argc(int argc, char **argv)
 		if (error)
 		{
 			ft_clean_arr_int(stack_a);
-			return(NULL);
+			return (NULL);
 		}
 		while (argc + c > argc)
 		{
 			if (ft_atoi(argv[i]) == stack_a[c - 1])
 			{
 				ft_clean_arr_int(stack_a);
-				return(NULL);
+				return (NULL);
 			}
 			c--;
 		}
@@ -59,5 +59,5 @@ int	*get_int_argc(int argc, char **argv)
 		i++;
 		c = i - 1;
 	}
-	return(stack_a);
+	return (stack_a);
 }
