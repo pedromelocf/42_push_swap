@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/09 17:21:35 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:11:18 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ int	*get_int_argc(int argc, char **argv)
 	}
 	return(stack_a);
 }
-
