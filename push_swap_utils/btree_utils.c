@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/19 14:24:25 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:15:55 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ t_btree	*insert_node(t_btree *btree, int arg, int counter)
 		if (!new_node)
 			return (NULL);
 		new_node->value = arg;
-		new_node->curr_index = counter;
-		new_node->beg_index = counter;
+		new_node->index = 0;
 		new_node->left = NULL;
 		new_node->right = NULL;
 		return (new_node);
