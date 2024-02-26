@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/26 11:46:37 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:09:00 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_btree
 	int				value;
 	int				index;
 	int				pos;
-	int				lenght;
 	struct s_btree	*right;
 	struct s_btree	*left;
 }					t_btree;
