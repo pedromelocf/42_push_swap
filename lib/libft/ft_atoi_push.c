@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 21:36:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/19 14:25:41 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:22:41 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	ft_atoi_push(const char *nptr, int *error)
 {
-	size_t	i;
-	size_t	c;
-	size_t	sign;
+	long long	i;
+	long long 	c;
+	long long 	sign;
 
 	c = 0;
 	i = 0;
@@ -36,7 +36,7 @@ int	ft_atoi_push(const char *nptr, int *error)
 		c = c * 10 + nptr[i] - '0';
 		i++;
 	}
-	if (nptr[i] != '\0' || sign * c > INT_MAX)
+	if (nptr[i] != '\0' || c > INT_MAX)
 		*error = 1;
 	return (sign * c);
 }
