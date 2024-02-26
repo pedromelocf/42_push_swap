@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/26 09:03:34 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:47:01 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,22 @@ typedef struct s_btree
 	struct s_btree	*left;
 }					t_btree;
 
-typedef struct s_push_swap
+typedef struct s_node
 {
-	struct s_btree	*btree;
-	int				*stack_a;
-	int				*stack_b;
-}					t_push_swap;
+	bool			stack_a;
+	int				index;
+	int				pos_a;
+	int 			pos_b;
+	int				target_pos;
+	int				cost;
+}					t_node;
+
+typedef struct s_stack
+{
+	struct s_node	*curr;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_stack;
 
 t_btree				*validate_arg(int argc, char **argv);
 int					*get_int_argc(int argc, char **argv);
