@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/19 14:24:12 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:38:41 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 t_btree	*validate_arg(int argc, char **argv)
 {
 	t_btree	*btree;
-	int		*stack_a;
+	int		*arr_int;
 
 	btree = NULL;
-	stack_a = get_int_argc(argc, argv);
-	if (!stack_a)
+	arr_int = get_int_argc(argc, argv);
+	if (!arr_int)
 		return (NULL);
-	btree = new_tree(argc, stack_a);
+	btree = new_tree(argc, arr_int);
 	if (!btree)
 		return (NULL);
 	return (btree);
@@ -29,7 +29,7 @@ t_btree	*validate_arg(int argc, char **argv)
 
 int	*get_int_argc(int argc, char **argv)
 {
-	int	*stack_a;
+	int	*arr_int;
 	int	i;
 	int	c;
 	int	error;
@@ -37,27 +37,27 @@ int	*get_int_argc(int argc, char **argv)
 	i = 1;
 	c = 0;
 	error = 0;
-	stack_a = ft_calloc(argc, sizeof(int));
+	arr_int = ft_calloc(argc, sizeof(int));
 	while (i < argc)
 	{
 		ft_atoi_push(argv[i], &error);
 		if (error)
 		{
-			ft_clean_arr_int(stack_a);
+			ft_clean_arr_int(arr_int);
 			return (NULL);
 		}
 		while (argc + c > argc)
 		{
-			if (ft_atoi(argv[i]) == stack_a[c - 1])
+			if (ft_atoi(argv[i]) == arr_int[c - 1])
 			{
-				ft_clean_arr_int(stack_a);
+				ft_clean_arr_int(arr_int);
 				return (NULL);
 			}
 			c--;
 		}
-		stack_a[i - 1] = ft_atoi(argv[i]);
+		arr_int[i - 1] = ft_atoi(argv[i]);
 		i++;
 		c = i - 1;
 	}
-	return (stack_a);
+	return (arr_int);
 }
