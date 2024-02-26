@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/02/26 16:38:41 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:00:03 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_btree	*validate_arg(int argc, char **argv)
 	if (!arr_int)
 		return (NULL);
 	btree = new_tree(argc, arr_int);
+	ft_clean_arr_int(arr_int);
 	if (!btree)
 		return (NULL);
 	return (btree);
