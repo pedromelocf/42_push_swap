@@ -6,25 +6,27 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/04 16:29:18 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:46:44 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_btree	*new_tree(int argc, int *stack_a)
+void	new_tree(int argc, int *stack_a, t_btree **btree)
 {
 	t_btree	*head;
 	int		counter;
 
 	counter = 1;
 	head = NULL;
+	*btree = NULL;
 	while (counter < argc)
 	{
 		head = insert_node(head, stack_a[counter], counter);
 		counter++;
 	}
-	return (head);
+	*btree = head;
+	return;
 }
 
 t_btree	*insert_node(t_btree *btree, int arg, int counter)
@@ -36,7 +38,7 @@ t_btree	*insert_node(t_btree *btree, int arg, int counter)
 	{
 		tree_node = malloc(sizeof(t_btree));
 		if (!tree_node)
-			return (NULL);
+			exit_status(1, NULL);
 		tree_node->value = arg;
 		tree_node->index = 0;
 		tree_node->pos = counter;
