@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/04 21:34:26 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:47:05 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,28 @@ void	inorder_transversal(t_btree **btree, int *index)
 	(*btree)->index = ++(*index);
 	inorder_transversal(&(*btree)->right, index);
 	return;
+}
+
+void	clean_tree(t_btree *btree)
+{
+	if (!btree)
+		return ;
+	clean_tree(btree->left);
+	clean_tree(btree->right);
+	free(btree);
+}
+
+int		search_index(t_btree *btree, int **arr_int)
+{
+	while(btree)
+	{
+		if (btree->value == **arr_int)
+			return (btree->index);
+		if (btree->value > **arr_int)
+			btree = btree->left;
+		else
+			btree = btree->right;
+	}
+	**arr_int++;
+	return(1);
 }
