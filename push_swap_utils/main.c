@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/04 17:23:47 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:24:23 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int	main(int argc, char **argv)
 
 	validate_arg(argc, argv, &arr_int);
 	new_tree(argc, arr_int, &btree);
-	// inorder_transversal(&btree);
+	inorder_transversal(&btree, &btree->index);
 	// init_stacks(stack_a, stack_b, &btree);
-	// clean_tree(btree);
+	clean_tree(btree);
+	ft_clean_arr_int(arr_int);
 	return (0);
 }
