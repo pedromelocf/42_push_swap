@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/04 21:24:09 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:34:26 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	new_tree(int argc, int *stack_a, t_btree **btree)
 		counter++;
 	}
 	*btree = head;
+	if (!*btree)
+		exit_status(1, NULL);
 	return;
 }
 
@@ -44,7 +46,6 @@ t_btree	*insert_node(t_btree *btree, int arg, int counter)
 		tree_node->pos = counter;
 		tree_node->left = NULL;
 		tree_node->right = NULL;
-
 		return (tree_node);
 	}
 	if (arg < btree->value)
