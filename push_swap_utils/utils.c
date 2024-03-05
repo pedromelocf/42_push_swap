@@ -6,28 +6,23 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/05 14:48:42 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:10:49 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		exit_status(int error, char *message)
-{
-	if (message)
-		ft_dprintf(2, "%s\n", message);
-	exit(error);
-}
-
 void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 			int *arr_int)
 {
 	short int	size;
+	short int	lenght;
 	stack_a = NULL;
 	stack_b = NULL;
 
 	size = 1;
-	while(size < (*btree)->index)
+	lenght = (*btree)->index;
+	while(size <= lenght)
 	{
 		(*stack_a)->curr = malloc(sizeof(t_node));
 		(*stack_a)->curr->index = search_index(*btree, &arr_int);
@@ -46,4 +41,11 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 	clean_tree(*btree);
 	ft_clean_arr_int(arr_int);
 	return;
+}
+
+int		exit_status(int error, char *message)
+{
+	if (message)
+		ft_dprintf(2, "%s\n", message);
+	exit(error);
 }
