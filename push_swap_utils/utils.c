@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/05 16:10:49 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:20:52 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,19 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 
 	size = 1;
 	lenght = (*btree)->index;
+	stack_a = malloc(sizeof(t_stack));
 	while(size <= lenght)
 	{
 		(*stack_a)->curr = malloc(sizeof(t_node));
 		(*stack_a)->curr->index = search_index(*btree, &arr_int);
 		(*stack_a)->curr->pos_a = size;
-		(*stack_a)->curr->pos_b = 0;
-		(*stack_a)->curr->target_pos = 0;
-		(*stack_a)->curr->cost_move = 0;
-		(*stack_a)->prev = NULL;
-		(*stack_a)->next = NULL;
+		if(size == 1)
+			(*stack_a) = (*stack_a)->next;
+		else
+		{
+			(*stack_a)->prev = (*stack_a)->curr;
+			(*stack_a) = (*stack_a)->next;
+		}
 		size++;
 	}
 	if (!stack_a)
