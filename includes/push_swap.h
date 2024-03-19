@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/19 18:15:02 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:25:27 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int					exit_status(int error, char *message);
 void				get_int_argc(int argc, char **argv, int **arr_int);
 void				new_tree(int argc, int *stack_a, t_btree **btree);
 t_btree				*insert_tree_node(t_btree *head, int value, int counter);
-void				insert_stack_nodes(t_stack **stack, t_btree *btree, int *arr_int);
+void				insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int);
 void				push_top(t_stack **stack, int value, int index, int pos);
 void				inorder_transversal(t_btree **btree, int *index);
 void				init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree, int *arr_int);
