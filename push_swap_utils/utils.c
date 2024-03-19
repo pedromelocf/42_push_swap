@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/19 11:22:19 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:16:50 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 {
 	*stack_a = NULL;
 	*stack_b = NULL;
-	insert_stack_nodes(&stack_a, btree, arr_int);
-	if (!stack_a)
+	*stack_a = malloc(sizeof(t_stack));
+	if (!*stack_a)
 		exit_status(1, NULL);
+	insert_stack_nodes(&stack_a, btree, arr_int);
 	clean_tree(*btree);
 	ft_clean_arr_int(arr_int);
-	return;
 }
 
 int		exit_status(int error, char *message)
@@ -34,19 +34,38 @@ int		exit_status(int error, char *message)
 
 void	insert_stack_nodes(t_stack **stack, t_btree *btree, int *arr_int)
 {
-	short int size;
-	short int lenght;
-	t_node *new_node;
+	short int stack_size;
+	short int amount_of_numbers;
 
-	size = 1;
-	lenght = (*btree)->index;
-	new_node = malloc(sizeof(t_node));
-	while(size <= lenght)
+	stack_size = 0;
+	amount_of_numbers = btree->index;
+	*(stack_a)->amount_of_numbers = amount_of_numbers;
+	while(stack_size <= amount_of_numbers)
 	{
+		push_top(&stack, arr_int[stack_size], search_index(arr_int[stack_size], btree), btree->pos);
+		stack_size++;
 	}
 }
 
-void	push_top(t_stack **stack, t_node *new_node)
+int		search_index(int value, t_btree *btree)
 {
+	while(btree)
+	{
+		if (btree->value == value)
+			return (btree->index);
+		if (btree->value > value)
+			btree = btree->left;
+		else
+			btree = btree->right;
+	}
+	exit_status(2, "Error: Value not found in the tree");
+}
 
+void	push_top(t_stack **stack, int value, int index, int pos)
+{
+	t_node *new_node;
+
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		exit_status(1, NULL);
 }
