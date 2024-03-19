@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/05 16:09:44 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:18:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	new_tree(int argc, int *stack_a, t_btree **btree)
 	*btree = NULL;
 	while (counter < argc)
 	{
-		head = insert_node(head, stack_a[counter], counter);
+		head = insert_tree_node(head, stack_a[counter], counter);
 		counter++;
 	}
 	*btree = head;
@@ -31,7 +31,7 @@ void	new_tree(int argc, int *stack_a, t_btree **btree)
 	return;
 }
 
-t_btree	*insert_node(t_btree *btree, int arg, int counter)
+t_btree	*insert_tree_node(t_btree *btree, int arg, int counter)
 {
 	t_btree	*tree_node;
 
@@ -49,9 +49,9 @@ t_btree	*insert_node(t_btree *btree, int arg, int counter)
 		return (tree_node);
 	}
 	if (arg < btree->value)
-		btree->left = insert_node(btree->left, arg, counter);
+		btree->left = insert_tree_node(btree->left, arg, counter);
 	else
-		btree->right = insert_node(btree->right, arg, counter);
+		btree->right = insert_tree_node(btree->right, arg, counter);
 	return (btree);
 }
 
