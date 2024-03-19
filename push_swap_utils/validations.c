@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/04 17:41:36 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:53:48 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	validate_arg(int argc, char **argv, int **arr_int)
 	if(argc == 1)
 		exit_status(1, NULL);
 	get_int_argc(argc, argv, arr_int);
-	return;
 }
 
 void	get_int_argc(int argc, char **argv, int **arr_int)
@@ -52,5 +51,4 @@ void	get_int_argc(int argc, char **argv, int **arr_int)
 		i++;
 		c = i - 1;
 	}
-	return;
 }
