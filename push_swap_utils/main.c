@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 12:59:41 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:06:31 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void print_stack(t_stack *stack)
 	while(stack->top != NULL)
 	{
 		node = stack->top;
-		printf("Stack node index: %d, Stack node pos_a: %d\n", node->index, node->pos_a);
+		printf("Stack node value: %d, Stack node index: %d, Stack node pos_a: %d\n", node->value, node->index, node->pos_a);
 		stack->top = stack->top->prev;
 	}
 }
