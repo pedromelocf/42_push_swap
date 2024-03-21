@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 00:00:09 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:02:32 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	struct s_node	*head;
+	struct s_node	*top;
 	int				amount_of_numbers;
 }					t_stack;
 
