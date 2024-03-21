@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/19 17:53:48 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:30:07 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,4 @@ void	get_int_argc(int argc, char **argv, int **arr_int)
 		c = i - 1;
 	}
 }
+
