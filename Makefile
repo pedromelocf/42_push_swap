@@ -14,7 +14,7 @@ PUSH_SWAP_OBJ = $(addprefix $(PUSH_SWAP_SRC_PATH), $(PUSH_SWAP_SRCS:.c=.o))
 PUSH_SWAP_SRCS = main.c \
 	validations.c \
 	btree_utils.c \
-	utils.c \
+	init_stacks.c \
 	exit_status.c
 
 #FLAGS
