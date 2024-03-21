@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 11:38:50 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:59:41 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int	main(int argc, char **argv)
 	print_tree(btree);
 	printf("\n");
 	inorder_transversal(&btree, &btree->index);
+	printf("\n");
 	print_tree_index(btree);
 	printf("\n");
 	init_stacks(&stack_a, &stack_b, &btree, arr_int);
+	print_stack(stack_a);
 	return (0);
 }
 
@@ -60,4 +62,16 @@ void print_tree_index(t_btree *btree)
 	printf("Tree node value: %d, Tree node index: %d\n", btree->value, btree->index);
 	if (btree->right != NULL)
 		print_tree_index(btree->right);
+}
+
+void print_stack(t_stack *stack)
+{
+	t_node *node;
+
+	while(stack->top != NULL)
+	{
+		node = stack->top;
+		printf("Stack node index: %d, Stack node pos_a: %d\n", node->index, node->pos_a);
+		stack->top = stack->top->prev;
+	}
 }

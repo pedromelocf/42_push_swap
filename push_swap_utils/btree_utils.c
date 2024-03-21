@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 11:43:19 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:56:09 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	inorder_transversal(t_btree **btree, int *index)
 		return;
 	inorder_transversal(&(*btree)->left, index);
 	(*btree)->index = (*index)++;
-	printf("Index: %d\n", *index);
+	printf("Inorder transversal Index: %d\n", *index);
 	inorder_transversal(&(*btree)->right, index);
 }
 

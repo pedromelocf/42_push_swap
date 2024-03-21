@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 11:39:03 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:50:28 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void				clean_tree(t_btree *btree);
 void 				print_arr_int(int *arr_int, int lenght);
 void 				print_tree(t_btree *btree);
 void 				print_tree_index(t_btree *btree);
+void 				print_stack(t_stack *stack);
 #endif
