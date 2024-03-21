@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/19 18:50:29 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/20 23:59:15 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 	ft_clean_arr_int(arr_int);
 }
 
-int		exit_status(int error, char *message)
-{
-	if (message)
-		ft_dprintf(2, "%s\n", message);
-	exit(error);
-}
-
 void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 {
 	int stack_size;
@@ -44,9 +37,9 @@ void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 	while(stack_size <= amount_of_numbers)
 	{
 		index = search_index(arr_int[stack_size], btree);
-		if (index == 1)
-			exit_status(2, "Error: Value not found in the tree");
-		push_top(stack_a, arr_int[stack_size], index, amount_of_numbers - stack_size);
+		// if (index == 1)
+		// 	exit_status(2, "Error: Value not found in the tree");
+		push_top(stack_a, index, amount_of_numbers - stack_size);
 		stack_size++;
 	}
 }
@@ -65,11 +58,28 @@ int		search_index(int value, t_btree *btree)
 	return(1);
 }
 
-void	push_top(t_stack **stack, int value, int index, int pos)
+void	push_top(t_stack **stack, int index, int pos)
 {
 	t_node *new_node;
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		exit_status(1, NULL);
+	new_node->index = index;
+	new_node->pos_a = pos;
+	new_node->pos_b = 0;
+	new_node->target_pos = 0;
+	new_node->cost_move = 0;
+	new_node->next = NULL;
+	if(!(*stack)->head)
+	{
+		new_node->prev = NULL;
+		(*stack)->head = new_node;
+	}
+	else
+	{
+		new_node->prev = (*stack)->head;
+		(*stack)->head->next = new_node;
+		(*stack)->head = new_node;
+	}
 }
