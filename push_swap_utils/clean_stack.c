@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_status.c                                      :+:      :+:    :+:   */
+/*   clean_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 23:54:51 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 20:12:38 by pmelo-ca         ###   ########.fr       */
+/*   Created: 2024/03/25 19:54:29 by pmelo-ca          #+#    #+#             */
+/*   Updated: 2024/03/25 20:12:44 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	exit_status(int error, char *message)
+void	clean_stacks(t_stack **stack_a, t_stack **stack_b)
 {
-	if (message)
-		ft_dprintf(2, "%s\n", message);
-	exit(error);
+	t_node *temp_node;
+
+	temp_node = malloc(sizeof(t_btree));
+	while (stack_a)
+	{
+		temp_node = (*stack_a)->top->next;
+		free((*stack_a)->top);
+	}
+	free(stack_a);
+	free(stack_b);
 }

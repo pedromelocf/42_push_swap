@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 17:46:21 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 20:11:46 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	new_tree(int argc, int *arr_int, t_btree **btree)
 {
-	int		counter;
+	int	counter;
 
 	counter = 1;
 	*btree = NULL;
@@ -34,23 +34,23 @@ void	insert_tree_node(t_btree **btree, int arg, int counter, int argc)
 		*btree = malloc(sizeof(t_btree));
 		if (!*btree)
 			exit_status(1, NULL);
-		(*btree)->amount_of_numbers = argc -1;
+		(*btree)->amount_of_numbers = argc - 1;
 		(*btree)->value = arg;
 		(*btree)->index = 1;
 		(*btree)->left = NULL;
 		(*btree)->right = NULL;
-		return;
+		return ;
 	}
 	if (arg < (*btree)->value)
-		insert_tree_node(&(*btree)->left, arg, counter, argc -1);
+		insert_tree_node(&(*btree)->left, arg, counter, argc - 1);
 	else
-		insert_tree_node(&(*btree)->right, arg, counter, argc -1);
+		insert_tree_node(&(*btree)->right, arg, counter, argc - 1);
 }
 
 void	inorder_transversal(t_btree **btree, int *index)
 {
 	if (!*btree)
-		return;
+		return ;
 	inorder_transversal(&(*btree)->left, index);
 	(*btree)->index = (*index)++;
 	inorder_transversal(&(*btree)->right, index);
