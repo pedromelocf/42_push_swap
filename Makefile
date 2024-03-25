@@ -19,7 +19,7 @@ PUSH_SWAP_SRCS = main.c \
 
 #FLAGS
 FLAGS = -Wall -Werror -Wextra
-CC = cc
+CC = cc -g3
 MAKEFLAG += make --no-print-directory
 
 #MESSAGES

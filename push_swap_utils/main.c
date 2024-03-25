@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 13:06:31 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:33:11 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ int	main(int argc, char **argv)
 	t_btree	*btree;
 	t_stack *stack_a;
 	t_stack *stack_b;
+	int index = 1;
 
 	validate_arg(argc, argv, &arr_int);
 	print_arr_int(arr_int, argc);
 	new_tree(argc, arr_int, &btree);
 	print_tree(btree);
 	printf("\n");
-	inorder_transversal(&btree, &btree->index);
+	inorder_transversal(&btree, &index);
 	printf("\n");
 	print_tree_index(btree);
 	printf("\n");

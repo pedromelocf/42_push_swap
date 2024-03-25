@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:00:43 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 13:04:33 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:33:50 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,21 @@ void	new_tree(int argc, int *arr_int, t_btree **btree)
 	*btree = NULL;
 	while (counter < argc)
 	{
-		insert_tree_node(btree, arr_int[counter], counter);
+		insert_tree_node(btree, arr_int[counter], counter, argc);
 		counter++;
 	}
 	if (!*btree)
 		exit_status(1, NULL);
 }
 
-void	insert_tree_node(t_btree **btree, int arg, int counter)
+void	insert_tree_node(t_btree **btree, int arg, int counter, int argc)
 {
 	if (!*btree)
 	{
 		*btree = malloc(sizeof(t_btree));
 		if (!*btree)
 			exit_status(1, NULL);
+		(*btree)->amount_of_numbers = argc -1;
 		(*btree)->value = arg;
 		(*btree)->index = 1;
 		(*btree)->left = NULL;
@@ -41,9 +42,9 @@ void	insert_tree_node(t_btree **btree, int arg, int counter)
 		return;
 	}
 	if (arg < (*btree)->value)
-		insert_tree_node(&(*btree)->left, arg, counter);
+		insert_tree_node(&(*btree)->left, arg, counter, argc -1);
 	else
-		insert_tree_node(&(*btree)->right, arg, counter);
+		insert_tree_node(&(*btree)->right, arg, counter, argc -1);
 }
 
 void	inorder_transversal(t_btree **btree, int *index)
@@ -52,7 +53,7 @@ void	inorder_transversal(t_btree **btree, int *index)
 		return;
 	inorder_transversal(&(*btree)->left, index);
 	(*btree)->index = (*index)++;
-	printf("Inorder transversal Index: %d\n", *index);
+	printf("Inorder transversal Value: %d\n", (*btree)->value);
 	inorder_transversal(&(*btree)->right, index);
 }
 

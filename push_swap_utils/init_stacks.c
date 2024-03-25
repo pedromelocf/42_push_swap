@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 13:04:47 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:33:06 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 	int	index;
 
 	stack_size = 0;
-	amount_of_numbers = btree->index;
+	amount_of_numbers = btree->amount_of_numbers;
 	(*stack_a)->amount_of_numbers = amount_of_numbers;
 	while(stack_size < amount_of_numbers)
 	{
