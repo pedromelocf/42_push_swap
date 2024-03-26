@@ -16,11 +16,12 @@ PUSH_SWAP_SRCS = main.c \
 	btree_utils.c \
 	init_stacks.c \
 	exit_status.c \
-	algorithm.c
+	algorithm.c \
+	operations.c
 
 #FLAGS
 FLAGS = -Wall -Werror -Wextra
-CC = cc
+CC = cc -g3
 MAKEFLAG += make --no-print-directory
 
 #MESSAGES
