@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 22:34:03 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:39:10 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 	*stack_b = NULL;
 	*stack_a = malloc(sizeof(t_stack));
 	if (!*stack_a)
-		exit_status(1, NULL);
+		exit_status(5, NULL);
+	*stack_b = malloc(sizeof(t_stack));
+	if (!*stack_b)
+		exit_status(5, NULL);
 	insert_stack_nodes(stack_a, *btree, arr_int);
 	clean_tree(*btree);
 	ft_clean_arr_int(arr_int);
