@@ -15,7 +15,8 @@ PUSH_SWAP_SRCS = main.c \
 	validations.c \
 	btree_utils.c \
 	init_stacks.c \
-	exit_status.c
+	exit_status.c \
+	algorithm.c
 
 #FLAGS
 FLAGS = -Wall -Werror -Wextra

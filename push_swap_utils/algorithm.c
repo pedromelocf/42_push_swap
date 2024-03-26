@@ -1,32 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   algoritm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 23:20:25 by pmelo-ca         ###   ########.fr       */
+/*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
+/*   Updated: 2024/03/25 23:16:30 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	int		*arr_int;
-	t_btree	*btree;
-	t_stack *stack_a;
-	t_stack *stack_b;
-	int		index;
-
-	index = 1;
-	validate_arg(argc, argv, &arr_int);
-	new_tree(argc, arr_int, &btree);
-	inorder_transversal(&btree, &index);
-	init_stacks(&stack_a, &stack_b, &btree, arr_int);
-	if (check_stack_is_ordered(stack_a))
-		exit_status(4, NULL);
-	return (0);
-}
 
