@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 23:07:52 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/26 11:58:54 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	get_int_argc(int argc, char **argv, int **arr_int)
 	}
 }
 
-int	check_stack_is_ordered(t_stack *stack_a)
+int	check_stack_is_sorted(t_stack *stack_a)
 {
 	int	i;
 
