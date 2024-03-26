@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:54:51 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/20 23:55:09 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:30:57 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,4 @@ int		exit_status(int error, char *message)
 		ft_dprintf(2, "%s\n", message);
 	exit(error);
 }
+

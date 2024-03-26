@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/21 00:45:52 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:31:05 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 	int	index;
 
 	stack_size = 0;
-	amount_of_numbers = btree->index;
+	amount_of_numbers = btree->amount_of_numbers;
 	(*stack_a)->amount_of_numbers = amount_of_numbers;
 	while(stack_size < amount_of_numbers)
 	{
 		index = search_index(arr_int[stack_size + 1], btree);
 		// if (index == 1)
 		// 	exit_status(2, "Error: Value not found in the tree");
-		push_top(stack_a, index, stack_size + 1);
+		push_top(stack_a, index, stack_size + 1, arr_int[stack_size + 1]);
 		stack_size++;
 	}
 }
@@ -58,13 +58,14 @@ int		search_index(int value, t_btree *btree)
 	return(1);
 }
 
-void	push_top(t_stack **stack, int index, int pos)
+void	push_top(t_stack **stack, int index, int pos, int value)
 {
 	t_node *new_node;
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		exit_status(1, NULL);
+	new_node->value = value;
 	new_node->index = index;
 	new_node->pos_a = pos;
 	new_node->pos_b = 0;
@@ -83,3 +84,4 @@ void	push_top(t_stack **stack, int index, int pos)
 		(*stack)->top = new_node;
 	}
 }
+
