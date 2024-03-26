@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 22:31:05 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:34:03 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 	while(stack_size < amount_of_numbers)
 	{
 		index = search_index(arr_int[stack_size + 1], btree);
-		// if (index == 1)
-		// 	exit_status(2, "Error: Value not found in the tree");
 		push_top(stack_a, index, stack_size + 1, arr_int[stack_size + 1]);
 		stack_size++;
 	}

@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/25 22:30:53 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/25 23:03:06 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	new_tree(argc, arr_int, &btree);
 	inorder_transversal(&btree, &index);
 	init_stacks(&stack_a, &stack_b, &btree, arr_int);
+	if (check_stack_is_ordered(stack_a) == 0)
+		exit_status(4, "Stack is ordered\n");
 	return (0);
 }
 
