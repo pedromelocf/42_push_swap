@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   algorithms_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/28 20:05:22 by pmelo-ca         ###   ########.fr       */
+/*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
+/*   Updated: 2024/03/28 20:19:51 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	update_position(t_stack *stack_a, t_stack *stack_b)
 {
-	int		*arr_int;
-	int		index;
-	t_btree	*btree;
-	t_stack *stack_a;
-	t_stack *stack_b;
 
-	index = 1;
-	validate_arg(argc, argv, &arr_int);
-	new_tree(argc, arr_int, &btree);
-	inorder_transversal(&btree, &index);
-	init_stacks(&stack_a, &stack_b, &btree, arr_int);
-	if (check_stack_is_sorted(stack_a))
-		exit_status(4, NULL);
-	algorithm(&stack_a, &stack_b);
-	return (0);
+}
+void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
+{
+
 }
 
+void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
+{
+
+}
+
+void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
+{
+
+}
+
+void	validate_rotates(t_stack **stack_a)
+{
+
+}
