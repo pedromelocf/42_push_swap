@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/28 20:35:57 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/29 00:45:33 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 }
+
 void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
@@ -55,7 +56,7 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 				i++;
 				stack_a->top = stack_a->top->next;
 			}
-			stack_b->top->target_pos = 1;
+			stack_b->top->target_pos = i;
 		}
 		stack_b->top = stack_b->top->prev;
 	}

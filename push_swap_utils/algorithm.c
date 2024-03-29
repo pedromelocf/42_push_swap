@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/28 20:18:14 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/29 00:43:00 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 	validate_rotates(stack_a);
 }
 
-void push_b_until_three (t_stack **stack_a, t_stack **stack_b)
+void	push_b_until_three (t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
 	int	p;
@@ -95,4 +95,3 @@ void push_b_until_three (t_stack **stack_a, t_stack **stack_b)
 		}
 	}
 }
-
