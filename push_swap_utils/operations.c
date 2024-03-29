@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/29 12:27:58 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/29 20:44:42 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,20 @@ void rotate(t_stack **stack_source)
 	(*stack_source)->top->next = NULL;
 }
 
-
 void	reverse_rotate(t_stack **stack_source)
 {
+	t_node *temp;
 
+	temp = dup_node((*stack_source)->top);
+	while((*stack_source)->top->prev != NULL)
+		(*stack_source)->top = (*stack_source)->top->prev;
+	if(temp == NULL)
+		exit_status(6, NULL);
+	temp->next = (*stack_source)->top;
+	(*stack_source)->top->next->prev = NULL;
+	(*stack_source)->top->prev = temp;
+	(*stack_source)->top->next = NULL;
+	while((*stack_source)->top->next != NULL)
+		(*stack_source)->top = (*stack_source)->top->next;
+	(*stack_source)->top->prev->next = temp;
 }
