@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/29 20:44:42 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/29 21:02:06 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,20 @@ void	reverse_rotate(t_stack **stack_source)
 	while((*stack_source)->top->next != NULL)
 		(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top->prev->next = temp;
+}
+
+t_node *dup_node(t_node *node_source)
+{
+	t_node *temp;
+
+	temp = malloc(sizeof(t_node));
+	temp->value = node_source->value;
+	temp->index = node_source->index;
+	temp->pos_a = node_source->pos_a;
+	temp->pos_b = node_source->pos_b;
+	temp->target_pos = node_source->target_pos;
+	temp->cost_move = node_source->cost_move;
+	temp->prev = node_source->prev;
+	temp->next = node_source->next;
+	return(temp);
 }

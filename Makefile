@@ -18,10 +18,10 @@ PUSH_SWAP_SRCS = main.c \
 	exit_status.c \
 	algorithm.c \
 	operations.c \
-	algorithm_utils.c
+	algorithms_utils.c
 
 #FLAGS
-FLAGS = -Wall -Werror -Wextra
+FLAGS =
 CC = cc -g3
 MAKEFLAG += make --no-print-directory
 

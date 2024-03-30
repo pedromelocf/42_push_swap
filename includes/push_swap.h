@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/28 20:21:20 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/03/29 20:57:28 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int					check_stack_is_sorted(t_stack *stack_a);
 void				algorithm(t_stack **stack_a, t_stack **stack_b);
 void 				sort_3(t_stack **stack_a);
 void				sort_greater_than_3(t_stack **stack_a, t_stack **stack_b);
+void				push_b_until_three (t_stack **stack_a, t_stack **stack_b);
 void				push(t_stack **stack_source, t_stack **stack_dest);
 void				swap(t_stack **stack_source);
 void				rotate(t_stack **stack_source);
 void				reverse_rotate(t_stack **stack_source);
+t_node 				*dup_node(t_node *node_source);
 #endif
