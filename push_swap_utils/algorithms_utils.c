@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 12:58:36 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:17:19 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,26 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 
 void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 {
+	int lower_cost;
+	int lower_cost_pos;
 
+	lower_cost = stack_b->top->cost_move;
+	lower_cost_pos = 1;
+	if (lower_cost == 0)
+	{
+		push(stack_b, stack_a);
+		return;
+	}
+	while(stack_b->top->prev != NULL)
+	{
+		if(lower_cost > stack_b->top->cost_move)
+		{
+			lower_cost = cost;
+			lower_cost_pos = stack_b->top->pos_b;
+		}
+		stack_b->top = stack_a->top-prev;
+	}
+	execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost);
 }
 
 void	validate_rotates(t_stack **stack_a)
@@ -110,4 +129,27 @@ void	validate_rotates(t_stack **stack_a)
 		rotate * (i - 1);
 	else
 		reverse_rotate * (2 + lenstacka - i);
+}
+
+void execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost)
+{
+	int x,
+	int y;
+	int new_cost;
+
+	x = lenstackb / 2;
+	y = lenstacka / 2;
+	if (x * 2 != lenstackb)
+		x+=1;
+	if (x * 2 != lenstacka)
+		x+=1;
+	if (lower_cost_pos <= x)
+		rotates(b) = lower_cost_pos - 1;
+	else
+		reverse_rotates(b) = stack_blen - lower_cost;
+	new_cost = lower_cost - (rotates || reverse_rotates);
+	if (new_cost <= y)
+		rotates(a) = new_cost;
+	else
+		reverse_rotates(a) = new_cost;
 }
