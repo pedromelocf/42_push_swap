@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/29 22:35:28 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:37:04 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,24 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 {
 	int x;
+	int y;
 
 	x = lenstackb / 2;
+	y = lenstacka / 2;
 	if (x * 2 != lenstackb)
+		x+=1;
+	if (x * 2 != lenstacka)
 		x+=1;
 	while(stack_b->top->prev != NULL)
 	{
 		if(stack_b->top->pos_b <= x)
-			stack_b->top->cost_move = stack_b->top->pos_b + stack_b->top->target_pos - 1;
+			stack_b->top->cost_move = stack_b->top->pos_b - 1;
 		else
-			stack_b->top->cost_move = 1 + lenstackb - stack_b->top->pos_b + stack_b->top->target_pos;
+			stack_b->top->cost_move = 1 + lenstackb - stack_b->top->pos_b;
+		if(stack_b->top->target_pos <= y)
+			stack_b->top->cost_move += stack_b->top->target_pos - 1;
+		else
+			stack_b->top->cost_move += 1 + lenstacka - stack_b->top->target_pos;
 		stack_b->top = stack_b->top->prev;
 	}
 }
