@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 12:37:04 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:52:40 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 			stack_b->top->cost_move = stack_b->top->pos_b - 1;
 		else
 			stack_b->top->cost_move = 1 + lenstackb - stack_b->top->pos_b;
-		if(stack_b->top->target_pos <= y)
+		if(stack_a->top->target_pos <= y)
 			stack_b->top->cost_move += stack_b->top->target_pos - 1;
 		else
 			stack_b->top->cost_move += 1 + lenstacka - stack_b->top->target_pos;
@@ -94,5 +94,15 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 
 void	validate_rotates(t_stack **stack_a)
 {
+	int y;
 
+	y = lenstacka / 2;
+	if (x * 2 != lenstacka)
+		x+=1;
+	while(stack_a->top->index != 1)
+		stack_a->top->prev;
+	if (stack_a->top->pos_a <= y)
+		rotate * (pos_a - 1);
+	else
+		reverse_rotate * (lenstacka - pos_a + 1);
 }
