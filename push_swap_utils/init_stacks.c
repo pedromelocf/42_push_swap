@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 16:59:01 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:37:26 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,7 @@ void	push_top(t_stack **stack, int index, int pos, int value)
 	}
 }
 
+void clean_stacks(t_stack **stack_a, t_stack **stack_b)
+{
+	
+}
