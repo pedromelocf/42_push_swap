@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 12:52:40 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:58:36 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,19 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 void	validate_rotates(t_stack **stack_a)
 {
 	int y;
+	int i;
 
+	i = 1;
 	y = lenstacka / 2;
 	if (x * 2 != lenstacka)
 		x+=1;
 	while(stack_a->top->index != 1)
+	{
+		i++;
 		stack_a->top->prev;
-	if (stack_a->top->pos_a <= y)
-		rotate * (pos_a - 1);
+	}
+	if (i <= y)
+		rotate * (i - 1);
 	else
-		reverse_rotate * (lenstacka - pos_a + 1);
+		reverse_rotate * (2 + lenstacka - i);
 }
