@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 15:17:19 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:11:35 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,8 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 	int x;
 	int y;
 
-	x = lenstackb / 2;
-	y = lenstacka / 2;
-	if (x * 2 != lenstackb)
-		x+=1;
-	if (x * 2 != lenstacka)
-		x+=1;
+	x = get_half_stack_size(stack_b);
+	y = get_half_stack_size(stack_a);
 	while(stack_b->top->prev != NULL)
 	{
 		if(stack_b->top->pos_b <= x)
@@ -96,7 +92,7 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 	lower_cost_pos = 1;
 	if (lower_cost == 0)
 	{
-		push(stack_b, stack_a);
+		push(stack_b, stack_a, "a");
 		return;
 	}
 	while(stack_b->top->prev != NULL)
@@ -117,9 +113,7 @@ void	validate_rotates(t_stack **stack_a)
 	int i;
 
 	i = 1;
-	y = lenstacka / 2;
-	if (x * 2 != lenstacka)
-		x+=1;
+	y = get_half_stack_size(stack_b);
 	while(stack_a->top->index != 1)
 	{
 		i++;
@@ -137,12 +131,8 @@ void execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost)
 	int y;
 	int new_cost;
 
-	x = lenstackb / 2;
-	y = lenstacka / 2;
-	if (x * 2 != lenstackb)
-		x+=1;
-	if (x * 2 != lenstacka)
-		x+=1;
+	x = get_half_stack_size(stack_b);
+	y = get_half_stack_size(stack_a);
 	if (lower_cost_pos <= x)
 		rotates(b) = lower_cost_pos - 1;
 	else

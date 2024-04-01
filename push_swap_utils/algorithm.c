@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/29 00:43:00 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:10:35 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	algorithm(t_stack **stack_a, t_stack **stack_b)
 {
 	if ((*stack_a)->amount_of_numbers == 2)
-		swap(stack_a);
+		swap(stack_a, "a");
 	else if ((*stack_a)->amount_of_numbers == 3)
 		sort_3(stack_a);
 	else
@@ -28,25 +28,25 @@ void sort_3(t_stack **stack_a)
 	{
 		if((*stack_a)->top->prev->index < (*stack_a)->top->prev->prev->index)
 		{
-			rotate(stack_a);
-			swap(stack_a);
+			rotate(stack_a, "a");
+			swap(stack_a, "a");
 		}
 		else
-			reverse_rotate(stack_a);
+			reverse_rotate(stack_a, "a");
 	}
 	else
 	{
 		if ((*stack_a)->top->prev->index < (*stack_a)->top->prev->prev->index)
 		{
 			if ((*stack_a)->top->index < (*stack_a)->top->prev->prev->index)
-				rotate(stack_a);
+				rotate(stack_a, "a");
 			else
-				swap(stack_a);
+				swap(stack_a, "a");
 		}
 		else
 		{
-			reverse_rotate(stack_a);
-			swap(stack_a);
+			reverse_rotate(stack_a, "a");
+			swap(stack_a, "a");
 		}
 	}
 }
@@ -86,11 +86,11 @@ void	push_b_until_three (t_stack **stack_a, t_stack **stack_b)
 		{
 			if (stack_a->top->index <= p)
 			{
-				push(&stack_a->top, &stack_b->top);
+				push(&stack_a->top, &stack_b->top, "b");
 				i++;
 			}
 			else
-				rotate(stack_a->top);
+				rotate(stack_a->top, "a");
 			x++;
 		}
 	}

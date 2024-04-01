@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   algorithms_utils2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 16:59:21 by pmelo-ca         ###   ########.fr       */
+/*   Created: 2024/04/01 17:08:16 by pmelo-ca          #+#    #+#             */
+/*   Updated: 2024/04/01 17:16:51 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+int	get_half_stack_size(t_stack *stack_source)
 {
-	int		*arr_int;
-	int		index;
-	t_btree	*btree;
-	t_stack *stack_a;
-	t_stack *stack_b;
+	int x;
+	int	y;
 
-	index = 1;
-	validate_arg(argc, argv, &arr_int);
-	new_tree(argc, arr_int, &btree);
-	inorder_transversal(&btree, &index);
-	init_stacks(&stack_a, &stack_b, &btree, arr_int);
-	if (check_stack_is_sorted(stack_a))
-		exit_status(7, NULL);
-	algorithm(&stack_a, &stack_b);
-	return (0);
+	x = 1;
+	y = 0;
+	while(stack_source->top->prev != NULL)
+	{
+		x++;
+		stack_b->top = stack_b->top->prev;
+	}
+	y = x / 2;
+	if (y * 2 != x)
+		y+=1;
+	return(y);
 }
-

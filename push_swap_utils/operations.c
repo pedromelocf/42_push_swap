@@ -6,13 +6,13 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/29 21:02:06 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:07:25 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	push(t_stack **stack_source, t_stack **stack_dest)
+void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 {
 	t_node *temp;
 
@@ -29,9 +29,10 @@ void	push(t_stack **stack_source, t_stack **stack_dest)
 		temp->prev = (*stack_dest)->top;
 	}
 	(*stack_dest)->top = temp;
+	ft_printf("p%s\n", message);
 }
 
-void	swap(t_stack **stack_source)
+void	swap(t_stack **stack_source, char *message)
 {
 	t_node *temp;
 
@@ -48,9 +49,10 @@ void	swap(t_stack **stack_source)
 	temp->prev = (*stack_source)->top->prev;
 	temp->next = (*stack_source)->top;
 	(*stack_source)->top->prev = temp;
+	ft_printf("s%s\n", message);
 }
 
-void rotate(t_stack **stack_source)
+void rotate(t_stack **stack_source, char *message)
 {
 	t_node *temp;
 
@@ -66,9 +68,10 @@ void rotate(t_stack **stack_source)
 		(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top = (*stack_source)->top->prev;
 	(*stack_source)->top->next = NULL;
+	ft_printf("r%s\n", message);
 }
 
-void	reverse_rotate(t_stack **stack_source)
+void	reverse_rotate(t_stack **stack_source, char *message)
 {
 	t_node *temp;
 
@@ -84,6 +87,7 @@ void	reverse_rotate(t_stack **stack_source)
 	while((*stack_source)->top->next != NULL)
 		(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top->prev->next = temp;
+	ft_printf("rr%s\n", message);
 }
 
 t_node *dup_node(t_node *node_source)
