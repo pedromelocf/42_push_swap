@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/28 23:08:35 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:59:01 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 	*stack_b = NULL;
 	*stack_a = malloc(sizeof(t_stack));
 	if (!*stack_a)
-		exit_status(5, NULL);
+		exit_status(4, "Error creating stack");
 	*stack_b = malloc(sizeof(t_stack));
 	if (!*stack_b)
-		exit_status(5, NULL);
+		exit_status(4, "Error creating stack");
 	insert_stack_nodes(stack_a, *btree, arr_int);
 	clean_tree(*btree);
 	ft_clean_arr_int(arr_int);
@@ -63,7 +63,7 @@ void	push_top(t_stack **stack, int index, int pos, int value)
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		exit_status(1, NULL);
+		exit_status(6, "Error creating node");
 	new_node->value = value;
 	new_node->index = index;
 	new_node->pos_a = pos;

@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/03/29 20:58:19 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:53:15 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	get_int_argc(int argc, char **argv, int **arr_int)
 		if (error)
 		{
 			ft_clean_arr_int(*arr_int);
-			exit_status(1, "Error");
+			exit_status(2, "Error");
 		}
 		while (c > 0)
 		{
 			if (ft_atoi(argv[i]) == (*arr_int)[c])
 			{
 				ft_clean_arr_int(*arr_int);
-				exit_status(1, "Error");
+				exit_status(2, "Error");
 			}
 			c--;
 		}
