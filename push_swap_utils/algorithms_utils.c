@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 22:19:46 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:36:54 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 	if (x * 2 != get_stack_size(stack_b))
 		x++;
 	y = get_stack_size(stack_a) / 2;
-	if (y * 2 != get_stack_size(stack_b))
+	if (y * 2 != get_stack_size(stack_a))
 		y++;
 	while(stack_b->top->prev != NULL)
 	{
@@ -153,3 +153,4 @@ void execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost)
 	else
 		reverse_rotates(a) = new_cost;
 }
+
