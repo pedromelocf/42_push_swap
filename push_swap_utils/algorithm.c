@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 23:45:42 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:22:02 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void sort_3(t_stack **stack_a)
 	}
 }
 
+
 void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
@@ -76,18 +77,20 @@ void	push_b_until_three (t_stack **stack_a, t_stack **stack_b)
 	int	x;
 
 	i = 0;
-	p = (*stack_a)->amount_of_numbers / 4;
+	p = (*stack_a)->amount_of_numbers / 3;
 	x = 0;
-	while(i < (*stack_a)->amount_of_numbers - 3)
+	while((*stack_a)->amount_of_numbers - 3 > i)
 	{
-		p *= 2;
 		x -= i;
-		while (x < (*stack_a)->amount_of_numbers - 3)
+		p *= 2;
+		while ((*stack_a)->amount_of_numbers > x)
 		{
 			if ((*stack_a)->top->index <= p)
 			{
 				push(stack_a, stack_b, "b");
 				i++;
+				if (i == (*stack_a)->amount_of_numbers - 3)
+					break;
 			}
 			else
 				rotate(stack_a, "a");
@@ -95,3 +98,4 @@ void	push_b_until_three (t_stack **stack_a, t_stack **stack_b)
 		}
 	}
 }
+
