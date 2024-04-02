@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 18:11:12 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 23:46:20 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,11 @@ void				swap(t_stack **stack_source, char *message);
 void				rotate(t_stack **stack_source, char *message);
 void				reverse_rotate(t_stack **stack_source, char *message);
 t_node 				*dup_node(t_node *node_source);
+void				update_position(t_stack *stack_a, t_stack* stack_b);
+void				calc_target_pos(t_stack *stack_a, t_stack *stack_b);
+void				get_move_cost(t_stack *stack_a, t_stack *stack_b);
+void				make_cheapest(t_stack **stack_a, t_stack **stack_b);
+void				validate_rotates(t_stack **stack_a);
+void 				execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int lower_cost);
+int					get_stack_size(t_stack *stack_source);
 #endif

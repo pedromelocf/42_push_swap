@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 18:10:35 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 23:45:42 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 	i = 0;
 	push_b_until_three(stack_a, stack_b);
 	sort_3(stack_a);
-	while (i < amount_of_numbers - 3)
+	while (i < (*stack_a)->amount_of_numbers - 3)
 	{
-		update_position(stack_a, stack_b);
-		calc_target_pos(stack_a, stack_b);
-		get_move_cost(stack_a, stack_b);
+		update_position(*stack_a, *stack_b);
+		calc_target_pos(*stack_a, *stack_b);
+		get_move_cost(*stack_a, *stack_b);
 		make_cheapest(stack_a, stack_b);
 		i++;
 	}
@@ -76,21 +76,21 @@ void	push_b_until_three (t_stack **stack_a, t_stack **stack_b)
 	int	x;
 
 	i = 0;
-	p = √stack_a->amount_of_numbers;
+	p = (*stack_a)->amount_of_numbers / 4;
 	x = 0;
-	while(i < stack_a->amount_of_numbers - 3)
+	while(i < (*stack_a)->amount_of_numbers - 3)
 	{
 		p *= 2;
 		x -= i;
-		while (x < stack_a->amount_of_numbers - 3)
+		while (x < (*stack_a)->amount_of_numbers - 3)
 		{
-			if (stack_a->top->index <= p)
+			if ((*stack_a)->top->index <= p)
 			{
-				push(&stack_a->top, &stack_b->top, "b");
+				push(stack_a, stack_b, "b");
 				i++;
 			}
 			else
-				rotate(stack_a->top, "a");
+				rotate(stack_a, "a");
 			x++;
 		}
 	}
