@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 10:27:54 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:26:05 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 	{
 		stack_a->top->pos_a = i;
 		stack_a->top->pos_b = 0;
+		if (stack_a->top->prev == NULL)
+			break;
 		stack_a->top = stack_a->top->prev;
 		i++;
 	}
@@ -28,33 +30,34 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 	{
 		stack_b->top->pos_b = i;
 		stack_b->top->pos_a = 0;
+		if (stack_b->top->prev == NULL)
+			break;
 		stack_b->top = stack_b->top->prev;
 		i++;
 	}
 }
 
-
 void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
 
-	i = 1;
-	while(stack_a->top != NULL)
-		stack_a->top = stack_a->top->prev;
+	while(stack_b->top->next != NULL)
+		stack_b->top = stack_b->top->next;
 	if(stack_b->top->index > stack_a->top->index)
 	{
 		stack_b->top->target_pos = 1;
 		return;
 	}
-	while(stack_b->top != NULL)
+	while(stack_b->top->prev != NULL)
 	{
+		i = get_stack_size(stack_a);
 		if(stack_b->top->index > stack_a->top->index)
 			stack_b->top->target_pos = 1;
 		else
 		{
 			while(stack_b->top->index < stack_a->top->index)
 			{
-				i++;
+				i--;
 				stack_a->top = stack_a->top->next;
 			}
 			stack_b->top->target_pos = i;
