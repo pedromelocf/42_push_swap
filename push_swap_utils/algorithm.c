@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 10:22:02 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 12:45:53 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
 
 void sort_3(t_stack **stack_a)
 {
-	if ((*stack_a)->top->index < (*stack_a)->top->prev->index)
+	if ((*stack_a)->top->index > (*stack_a)->top->prev->index)
 	{
-		if((*stack_a)->top->prev->index < (*stack_a)->top->prev->prev->index)
+		if((*stack_a)->top->prev->index > (*stack_a)->top->prev->prev->index)
 		{
 			rotate(stack_a, "a");
 			swap(stack_a, "a");
 		}
 		else
-			reverse_rotate(stack_a, "a");
-	}
-	else
-	{
-		if ((*stack_a)->top->prev->index < (*stack_a)->top->prev->prev->index)
 		{
-			if ((*stack_a)->top->index < (*stack_a)->top->prev->prev->index)
+			if((*stack_a)->top->index > (*stack_a)->top->prev->prev->index)
 				rotate(stack_a, "a");
 			else
 				swap(stack_a, "a");
 		}
+	}
+	else
+	{
+		if((*stack_a)->top->index > (*stack_a)->top->prev->prev->index)
+			reverse_rotate(stack_a, "a");
 		else
 		{
 			reverse_rotate(stack_a, "a");
