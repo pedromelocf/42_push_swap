@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 10:23:21 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:27:54 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 	while(stack_b->top != NULL)
 	{
 		stack_b->top->pos_b = i;
-		stack_a->top->pos_a = 0;
+		stack_b->top->pos_a = 0;
 		stack_b->top = stack_b->top->prev;
 		i++;
 	}
