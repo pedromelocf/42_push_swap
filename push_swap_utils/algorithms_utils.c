@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 17:56:30 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:04:59 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 		temp = temp->prev;
 		i++;
 	}
-	stack_a->amount_of_numbers = i;
+	stack_a->amount_of_numbers = i - 1;
 	i = 1;
 	temp = stack_b->top;
 	while(temp != NULL)
@@ -35,7 +35,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 		temp = temp->prev;
 		i++;
 	}
-	stack_b->amount_of_numbers = i;
+	stack_b->amount_of_numbers = i - 1;
 }
 
 void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
@@ -58,7 +58,7 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 				if (i == 1)
 					break;
 			}
-			temp1->target_pos = i + 1;
+			temp1->target_pos = i;
 		}
 		temp1 = temp1->prev;
 		temp2 = stack_a->top;
@@ -70,23 +70,24 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 	int x;
 	int y;
 
+	t_node *temp = stack_b->top;
 	x = stack_b->amount_of_numbers / 2;
 	if (x * 2 != stack_b->amount_of_numbers)
 		x++;
 	y = stack_a->amount_of_numbers / 2;
 	if (y * 2 != stack_a->amount_of_numbers)
 		y++;
-	while(stack_b->top->prev != NULL)
+	while(temp != NULL)
 	{
-		if(stack_b->top->pos_b <= x)
-			stack_b->top->cost_move = stack_b->top->pos_b - 1;
+		if(temp->pos_b <= x)
+			temp->cost_move = temp->pos_b - 1;
 		else
-			stack_b->top->cost_move = 1 + stack_b->amount_of_numbers - stack_b->top->pos_b;
+			temp->cost_move = 1 + stack_b->amount_of_numbers - temp->pos_b;
 		if(stack_a->top->target_pos <= y)
-			stack_b->top->cost_move += stack_b->top->target_pos - 1;
+			temp->cost_move += temp->target_pos - 1;
 		else
-			stack_b->top->cost_move += 1 + stack_a->amount_of_numbers - stack_b->top->target_pos;
-		stack_b->top = stack_b->top->prev;
+			temp->cost_move += 1 + stack_a->amount_of_numbers - temp->target_pos;
+		temp = temp->prev;
 	}
 }
 
