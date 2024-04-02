@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 18:11:35 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:19:46 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,22 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 	int x;
 	int y;
 
-	x = get_half_stack_size(stack_b);
-	y = get_half_stack_size(stack_a);
+	x = get_stack_size(stack_b) / 2;
+	if (x * 2 != get_stack_size(stack_b))
+		x++;
+	y = get_stack_size(stack_a) / 2;
+	if (y * 2 != get_stack_size(stack_b))
+		y++;
 	while(stack_b->top->prev != NULL)
 	{
 		if(stack_b->top->pos_b <= x)
 			stack_b->top->cost_move = stack_b->top->pos_b - 1;
 		else
-			stack_b->top->cost_move = 1 + lenstackb - stack_b->top->pos_b;
+			stack_b->top->cost_move = 1 + get_stack_size(stack_b) - stack_b->top->pos_b;
 		if(stack_a->top->target_pos <= y)
 			stack_b->top->cost_move += stack_b->top->target_pos - 1;
 		else
-			stack_b->top->cost_move += 1 + lenstacka - stack_b->top->target_pos;
+			stack_b->top->cost_move += 1 + get_stack_size(stack_a) - stack_b->top->target_pos;
 		stack_b->top = stack_b->top->prev;
 	}
 }
@@ -113,7 +117,9 @@ void	validate_rotates(t_stack **stack_a)
 	int i;
 
 	i = 1;
-	y = get_half_stack_size(stack_b);
+	y = get_stack_size(stack_b) / 2;
+	if (y * 2 != get_stack_size(stack_b))
+		y++;
 	while(stack_a->top->index != 1)
 	{
 		i++;
@@ -122,7 +128,7 @@ void	validate_rotates(t_stack **stack_a)
 	if (i <= y)
 		rotate * (i - 1);
 	else
-		reverse_rotate * (2 + lenstacka - i);
+		reverse_rotate * (2 + get_stack_size(stack_b) - i);
 }
 
 void execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost)
@@ -131,12 +137,16 @@ void execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost)
 	int y;
 	int new_cost;
 
-	x = get_half_stack_size(stack_b);
-	y = get_half_stack_size(stack_a);
+	x = get_stack_size(stack_b) / 2;
+	if (x * 2 != get_stack_size(stack_b))
+		x++;
+	y = get_stack_size(stack_a) / 2;
+	if (y * 2 != get_stack_size(stack_b))
+		y++;
 	if (lower_cost_pos <= x)
 		rotates(b) = lower_cost_pos - 1;
 	else
-		reverse_rotates(b) = stack_blen - lower_cost;
+		reverse_rotates(b) = get_stack_size(stack_b) - lower_cost;
 	new_cost = lower_cost - (rotates || reverse_rotates);
 	if (new_cost <= y)
 		rotates(a) = new_cost;
