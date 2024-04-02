@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 13:00:57 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:53:46 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 			{
 				i--;
 				stack_a->top = stack_a->top->next;
+				if (i == 0)
+					break;
 			}
-			stack_b->top->target_pos = i;
+			stack_b->top->target_pos = i + 1;
 		}
 		stack_b->top = stack_b->top->prev;
 	}
@@ -74,22 +76,22 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 	int x;
 	int y;
 
-	x = get_stack_size(stack_b) / 2;
-	if (x * 2 != get_stack_size(stack_b))
+	x = stack_b->amount_of_numbers / 2;
+	if (x * 2 != stack_b->amount_of_numbers)
 		x++;
-	y = get_stack_size(stack_a) / 2;
-	if (y * 2 != get_stack_size(stack_a))
+	y = stack_a->amount_of_numbers / 2;
+	if (y * 2 != stack_a->amount_of_numbers)
 		y++;
 	while(stack_b->top->prev != NULL)
 	{
 		if(stack_b->top->pos_b <= x)
 			stack_b->top->cost_move = stack_b->top->pos_b - 1;
 		else
-			stack_b->top->cost_move = 1 + get_stack_size(stack_b) - stack_b->top->pos_b;
+			stack_b->top->cost_move = 1 + stack_b->amount_of_numbers - stack_b->top->pos_b;
 		if(stack_a->top->target_pos <= y)
 			stack_b->top->cost_move += stack_b->top->target_pos - 1;
 		else
-			stack_b->top->cost_move += 1 + get_stack_size(stack_a) - stack_b->top->target_pos;
+			stack_b->top->cost_move += 1 + stack_a->amount_of_numbers - stack_b->top->target_pos;
 		stack_b->top = stack_b->top->prev;
 	}
 }
