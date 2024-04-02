@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 22:36:54 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:52:01 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,19 +116,31 @@ void	validate_rotates(t_stack **stack_a)
 	int y;
 	int i;
 
-	i = 1;
+	i = 0;
 	y = get_stack_size(stack_b) / 2;
 	if (y * 2 != get_stack_size(stack_b))
 		y++;
 	while(stack_a->top->index != 1)
 	{
 		i++;
-		stack_a->top->prev;
+		stack_a->top = stack_a->top->prev;
 	}
 	if (i <= y)
-		rotate * (i - 1);
+	{
+		while (i > 0)
+		{
+			rotate(stack_a, "a");
+			i--;
+		}
+	}
 	else
-		reverse_rotate * (2 + get_stack_size(stack_b) - i);
+	{
+		while (get_stack_size(stack_b) - i >= 0)
+		{
+			reverse_rotate(stack_a, "a");
+			i--;
+		}
+	}
 }
 
 void execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost)
