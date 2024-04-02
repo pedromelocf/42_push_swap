@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 13:59:39 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:56:30 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 void	update_position(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
+	t_node *temp = stack_a->top;
 
 	i = 1;
-	while(stack_a->top != NULL)
+	while(temp != NULL)
 	{
-		stack_a->top->pos_a = i;
-		stack_a->top->pos_b = 0;
-		if (stack_a->top->prev == NULL)
-			break;
-		stack_a->top = stack_a->top->prev;
+		temp->pos_a = i;
+		temp->pos_b = 0;
+		temp = temp->prev;
 		i++;
 	}
 	stack_a->amount_of_numbers = i;
 	i = 1;
-	while(stack_b->top != NULL)
+	temp = stack_b->top;
+	while(temp != NULL)
 	{
-		stack_b->top->pos_b = i;
-		stack_b->top->pos_a = 0;
-		if (stack_b->top->prev == NULL)
-			break;
-		stack_b->top = stack_b->top->prev;
+		temp->pos_b = i;
+		temp->pos_a = 0;
+		temp = temp->prev;
 		i++;
 	}
 	stack_b->amount_of_numbers = i;
@@ -44,30 +42,26 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
 
-	while(stack_b->top->next != NULL)
-		stack_b->top = stack_b->top->next;
-	if(stack_b->top->index > stack_a->top->index)
-	{
-		stack_b->top->target_pos = 1;
-		return;
-	}
-	while(stack_b->top->prev != NULL)
+	t_node *temp1 = stack_b->top;
+	t_node *temp2 = stack_a->top;
+	while(temp1 != NULL)
 	{
 		i = stack_a->amount_of_numbers;
-		if(stack_b->top->index > stack_a->top->index)
-			stack_b->top->target_pos = 1;
+		if(temp1->index > temp2->index)
+			temp1->target_pos = 1;
 		else
 		{
-			while(stack_b->top->index < stack_a->top->index)
+			while(temp1->index < temp2->index)
 			{
 				i--;
-				stack_a->top = stack_a->top->next;
-				if (i == 0)
+				temp2 = temp2->prev;
+				if (i == 1)
 					break;
 			}
-			stack_b->top->target_pos = i + 1;
+			temp1->target_pos = i + 1;
 		}
-		stack_b->top = stack_b->top->prev;
+		temp1 = temp1->prev;
+		temp2 = stack_a->top;
 	}
 }
 
