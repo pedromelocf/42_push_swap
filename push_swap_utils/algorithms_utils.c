@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 13:53:46 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:59:39 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,37 +120,6 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 	execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost);
 }
 
-void	validate_rotates(t_stack **stack_a)
-{
-	int y;
-	int i;
-
-	i = 0;
-	y = get_stack_size(*stack_a) / 2;
-	if (y * 2 != get_stack_size(*stack_a))
-		y++;
-	while((*stack_a)->top->index != 1)
-	{
-		i++;
-		(*stack_a)->top = (*stack_a)->top->prev;
-	}
-	if (i <= y)
-	{
-		while (i > 0)
-		{
-			rotate(stack_a, "a");
-			i--;
-		}
-	}
-	else
-	{
-		while (get_stack_size(*stack_a) - i >= 0)
-		{
-			reverse_rotate(stack_a, "a");
-			i--;
-		}
-	}
-}
 
 void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int lower_cost)
 {
@@ -160,11 +129,11 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	int rotates;
 	int reverse_rotates;
 
-	x = get_stack_size(*stack_b) / 2;
-	if (x * 2 != get_stack_size(*stack_b))
+	x = (*stack_b)->amount_of_numbers / 2;
+	if (x * 2 != (*stack_b)->amount_of_numbers)
 		x++;
-	y = get_stack_size(*stack_a) / 2;
-	if (y * 2 != get_stack_size(*stack_a))
+	y = (*stack_a)->amount_of_numbers / 2;
+	if (y * 2 != (*stack_a)->amount_of_numbers)
 		y++;
 	if (lower_cost_pos <= x)
 	{
@@ -178,7 +147,7 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	}
 	else
 	{
-		reverse_rotates = get_stack_size(*stack_b) - lower_cost;
+		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost;
 		while(reverse_rotates > 0)
 		{
 			reverse_rotate(stack_b, "b");
@@ -207,3 +176,34 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	push(stack_b, stack_a, "a");
 }
 
+void	validate_rotates(t_stack **stack_a)
+{
+	int y;
+	int i;
+
+	i = 0;
+	y =(*stack_a)->amount_of_numbers / 2;
+	if (y * 2 !=(*stack_a)->amount_of_numbers)
+		y++;
+	while((*stack_a)->top->index != 1)
+	{
+		i++;
+		(*stack_a)->top = (*stack_a)->top->prev;
+	}
+	if (i <= y)
+	{
+		while (i > 0)
+		{
+			rotate(stack_a, "a");
+			i--;
+		}
+	}
+	else
+	{
+		while (get_stack_size(*stack_a) - i >= 0)
+		{
+			reverse_rotate(stack_a, "a");
+			i--;
+		}
+	}
+}
