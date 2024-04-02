@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 18:04:59 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:58:30 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,10 +195,10 @@ void	validate_rotates(t_stack **stack_a)
 	}
 	else
 	{
-		while (get_stack_size(*stack_a) - i >= 0)
+		while ((*stack_a)->amount_of_numbers - i > 0)
 		{
 			reverse_rotate(stack_a, "a");
-			i--;
+			i++;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 18:31:56 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:45:57 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void sort_3(t_stack **stack_a)
 
 void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 {
-	push_b_until_three(stack_a, stack_b);
+	push_b_until_three(*stack_a, *stack_b);
 	sort_3(stack_a);
 	while ((*stack_b)->top != NULL)
 	{
@@ -66,31 +66,35 @@ void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 	validate_rotates(stack_a);
 }
 
-void	push_b_until_three (t_stack **stack_a, t_stack **stack_b)
+void	push_b_until_three (t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	p;
 	int	x;
+	t_node *temp = stack_a->top;
 
 	i = 0;
-	p = (*stack_a)->amount_of_numbers / 3;
+	p = stack_a->amount_of_numbers / 3;
 	x = 0;
-	while((*stack_a)->amount_of_numbers - 3 > i)
+	while(stack_a->amount_of_numbers - 3 > i)
 	{
 		x -= i;
 		p *= 2;
-		while ((*stack_a)->amount_of_numbers > x)
+		while (stack_a->amount_of_numbers > x)
 		{
-			if ((*stack_a)->top->index <= p)
+			if (temp->index <= p)
 			{
-				push(stack_a, stack_b, "b");
+				push(&stack_a, &stack_b, "b");
 				i++;
-				if (i == (*stack_a)->amount_of_numbers - 3)
+				if (i == stack_a->amount_of_numbers - 3)
 					break;
 			}
 			else
-				rotate(stack_a, "a");
+				rotate(&stack_a, "a");
+			temp = temp->prev;
 			x++;
 		}
+		temp = stack_a->top;
 	}
 }
+
