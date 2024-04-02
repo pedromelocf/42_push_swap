@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 16:53:15 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:55:39 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,11 @@ int	check_stack_is_sorted(t_stack *stack_a)
 	while(stack_a->amount_of_numbers > i)
 	{
 		if (stack_a->top->prev->index < stack_a->top->index)
+		{
+			while(stack_a->top->next != NULL)
+				stack_a->top = stack_a->top->next;
 			return(0);
+		}
 		stack_a->top = stack_a->top->prev;
 		i++;
 	}
