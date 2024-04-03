@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/03 13:04:40 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:51:07 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 		temp = temp->prev;
 		i++;
 	}
-	stack_a->amount_of_numbers = i - 1;
+	stack_a->amount_of_numbers = i + 1;
 	i = 1;
 	temp = stack_b->top;
 	while(temp != NULL)
@@ -35,7 +35,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 		temp = temp->prev;
 		i++;
 	}
-	stack_b->amount_of_numbers = i - 1;
+	stack_b->amount_of_numbers = i + 1;
 }
 
 void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
