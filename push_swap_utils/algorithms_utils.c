@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/03 14:51:07 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/03 18:52:59 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 	t_node *temp_b = stack_b->top;
 	while(temp_b != NULL)
 	{
-		while(temp_a->prev != NULL)
-			temp_a = temp_a->prev;
-		i = stack_a->amount_of_numbers;
-		if(temp_b->index > temp_a->index)
+		i = 1;
+		if(temp_b->index < temp_a->index)
 			temp_b->target_pos = 1;
 		else
 		{
-			while(temp_b->index < temp_a->index)
+			while(temp_b->index > temp_a->index)
 			{
-				i--;
-				temp_a = temp_a->next;
-				if (i == 0)
+				i++;
+				temp_a = temp_a->prev;
+				if (i == stack_a->amount_of_numbers)
 					break;
 			}
-			temp_b->target_pos = i + 1;
+			if (i == stack_a->amount_of_numbers)
+				temp_b->target_pos = 1;
+			temp_b->target_pos = i;
 		}
 		temp_b = temp_b->prev;
 		temp_a = stack_a->top;
