@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 18:58:30 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:51:45 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,28 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
 
-	t_node *temp1 = stack_b->top;
-	t_node *temp2 = stack_a->top;
-	while(temp1 != NULL)
+	t_node *temp_a = stack_a->top;
+	t_node *temp_b = stack_b->top;
+	while(temp_b != NULL)
 	{
+		while(temp_a->prev != NULL)
+			temp_a = temp_a->prev;
 		i = stack_a->amount_of_numbers;
-		if(temp1->index > temp2->index)
-			temp1->target_pos = 1;
+		if(temp_b->index > temp_a->index)
+			temp_b->target_pos = 1;
 		else
 		{
-			while(temp1->index < temp2->index)
+			while(temp_b->index < temp_a->index)
 			{
 				i--;
-				temp2 = temp2->prev;
-				if (i == 1)
+				temp_a = temp_a->next;
+				if (i == 0)
 					break;
 			}
-			temp1->target_pos = i;
+			temp_b->target_pos = i + 1;
 		}
-		temp1 = temp1->prev;
-		temp2 = stack_a->top;
+		temp_b = temp_b->prev;
+		temp_a = stack_a->top;
 	}
 }
 
@@ -195,7 +197,7 @@ void	validate_rotates(t_stack **stack_a)
 	}
 	else
 	{
-		while ((*stack_a)->amount_of_numbers - i > 0)
+		while ((*stack_a)->amount_of_numbers - i >= 0)
 		{
 			reverse_rotate(stack_a, "a");
 			i++;
