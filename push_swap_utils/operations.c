@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/01 18:07:25 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/03 01:29:41 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 		return;
 	temp = dup_node((*stack_source)->top);
 	(*stack_source)->top = (*stack_source)->top->prev;
-	(*stack_source)->top->next = NULL;
+	if ((*stack_source)->top != NULL)
+		(*stack_source)->top->next = NULL;
+	temp->prev = NULL;
 	if ((*stack_dest)->top == NULL)
 		temp->prev = NULL;
 	else
