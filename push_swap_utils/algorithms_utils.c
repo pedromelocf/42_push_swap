@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/03 12:51:45 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/03 13:04:40 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,23 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 {
 	int lower_cost;
 	int lower_cost_pos;
+	t_node *temp = (*stack_b)->top;
 
-	lower_cost = (*stack_b)->top->cost_move;
+	lower_cost = temp->cost_move;
 	lower_cost_pos = 1;
 	if (lower_cost == 0)
 	{
 		push(stack_b, stack_a, "a");
 		return;
 	}
-	while((*stack_b)->top->prev != NULL)
+	while(temp->prev != NULL)
 	{
-		if(lower_cost > (*stack_b)->top->cost_move)
+		if(lower_cost > temp->cost_move)
 		{
-			lower_cost = (*stack_b)->top->cost_move;
-			lower_cost_pos = (*stack_b)->top->pos_b;
+			lower_cost = temp->cost_move;
+			lower_cost_pos = temp->pos_b;
 		}
-		(*stack_b)->top = (*stack_a)->top->prev;
+		temp = temp->prev;
 	}
 	execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost);
 }
