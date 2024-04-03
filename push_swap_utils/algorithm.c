@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 18:45:57 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:22:15 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void sort_3(t_stack **stack_a)
 void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 {
 	push_b_until_three(*stack_a, *stack_b);
-	sort_3(stack_a);
+	(*stack_a)->amount_of_numbers = 3;
+	if (!check_stack_is_sorted(*stack_a))
+		sort_3(stack_a);
 	while ((*stack_b)->top != NULL)
 	{
 		update_position(*stack_a, *stack_b);
