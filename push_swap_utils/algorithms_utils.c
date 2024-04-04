@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 11:39:03 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:07:02 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void	validate_rotates(t_stack **stack_a)
 		(*stack_a)->top = (*stack_a)->top->next;
 	if (i <= y)
 	{
-		while (i > 0)
+		while (i > 1)
 		{
 			rotate(stack_a, "a");
 			i--;
