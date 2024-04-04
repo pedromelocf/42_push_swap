@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/03 14:22:15 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:37:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 		get_move_cost(*stack_a, *stack_b);
 		make_cheapest(stack_a, stack_b);
 	}
+	update_position(*stack_a, *stack_b);
 	validate_rotates(stack_a);
 }
 
