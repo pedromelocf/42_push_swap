@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 00:32:35 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:31:50 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void	validate_rotates(t_stack **stack_a)
 	int y;
 	int i;
 
-	i = 0;
+	i = 1;
 	y =(*stack_a)->amount_of_numbers / 2;
 	if (y * 2 !=(*stack_a)->amount_of_numbers)
 		y++;
@@ -188,6 +188,8 @@ void	validate_rotates(t_stack **stack_a)
 		i++;
 		(*stack_a)->top = (*stack_a)->top->prev;
 	}
+	while((*stack_a)->top->next != NULL)
+		(*stack_a)->top = (*stack_a)->top->next;
 	if (i <= y)
 	{
 		while (i > 0)
@@ -198,7 +200,7 @@ void	validate_rotates(t_stack **stack_a)
 	}
 	else
 	{
-		while ((*stack_a)->amount_of_numbers - i >= 0)
+		while ((*stack_a)->amount_of_numbers - i > 0)
 		{
 			reverse_rotate(stack_a, "a");
 			i++;
