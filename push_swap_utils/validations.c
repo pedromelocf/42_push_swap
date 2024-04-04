@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 11:55:39 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 00:26:59 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,18 @@ void	get_int_argc(int argc, char **argv, int **arr_int)
 int	check_stack_is_sorted(t_stack *stack_a)
 {
 	int	i;
+	t_node *temp = stack_a->top;
 
 	i = 1;
 	while(stack_a->amount_of_numbers > i)
 	{
-		if (stack_a->top->prev->index < stack_a->top->index)
+		if (temp->prev->index < temp->index)
 		{
-			while(stack_a->top->next != NULL)
-				stack_a->top = stack_a->top->next;
+			while(temp->next != NULL)
+				temp = temp->next;
 			return(0);
 		}
-		stack_a->top = stack_a->top->prev;
+		temp = temp->prev;
 		i++;
 	}
 	return(1);
