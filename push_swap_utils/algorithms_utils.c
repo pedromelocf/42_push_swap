@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 12:07:02 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:11:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 			}
 			if (i == stack_a->amount_of_numbers)
 				temp_b->target_pos = 1;
-			temp_b->target_pos = i;
+			else
+				temp_b->target_pos = i;
 		}
 		temp_b = temp_b->prev;
 		temp_a = stack_a->top;
@@ -85,7 +86,7 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 			temp->cost_move = temp->pos_b - 1;
 		else
 			temp->cost_move = 1 + stack_b->amount_of_numbers - temp->pos_b;
-		if(stack_a->top->target_pos <= y)
+		if(stack_b->top->target_pos <= y)
 			temp->cost_move += temp->target_pos - 1;
 		else
 			temp->cost_move += 1 + stack_a->amount_of_numbers - temp->target_pos;
