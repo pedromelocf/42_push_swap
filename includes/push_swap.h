@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/02 18:44:17 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 00:51:32 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ typedef struct s_stack
 	int				amount_of_numbers;
 }					t_stack;
 
-void				validate_arg(int argc, char **argv, int **arr_int);
+int					validate_arg(int argc, char **argv, int **arr_int);
 int					exit_status(int error, char *message);
-void				get_int_argc(int argc, char **argv, int **arr_int);
+int					get_int_argc(int argc, char **argv, int **arr_int);
 void				new_tree(int argc, int *stack_a, t_btree **btree);
 void				insert_tree_node(t_btree **btree, int value, int counter, int argc);
 void				insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int);

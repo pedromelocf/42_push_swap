@@ -6,21 +6,23 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 00:26:59 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/04 00:51:22 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	validate_arg(int argc, char **argv, int **arr_int)
+int	validate_arg(int argc, char **argv, int **arr_int)
 {
 	*arr_int = NULL;
 	if(argc == 1)
 		exit_status(1, NULL);
-	get_int_argc(argc, argv, arr_int);
+	if (get_int_argc(argc, argv, arr_int))
+		return(1);
+	return(0);
 }
 
-void	get_int_argc(int argc, char **argv, int **arr_int)
+int	get_int_argc(int argc, char **argv, int **arr_int)
 {
 	int	i;
 	int	c;
@@ -34,23 +36,18 @@ void	get_int_argc(int argc, char **argv, int **arr_int)
 	{
 		ft_atoi_push(argv[i], &error);
 		if (error)
-		{
-			ft_clean_arr_int(*arr_int);
-			exit_status(2, "Error");
-		}
+			return(1);
 		while (c > 0)
 		{
 			if (ft_atoi(argv[i]) == (*arr_int)[c])
-			{
-				ft_clean_arr_int(*arr_int);
-				exit_status(2, "Error");
-			}
+				return(1);
 			c--;
 		}
 		(*arr_int)[i] = ft_atoi(argv[i]);
 		i++;
 		c = i - 1;
 	}
+	return(0);
 }
 
 int	check_stack_is_sorted(t_stack *stack_a)
