@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 11:24:38 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:15:41 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 {
-	t_node *temp;
+	t_node	*temp;
 
-	if(!(*stack_source))
-		return;
+	if (!(*stack_source))
+		return ;
 	temp = dup_node((*stack_source)->top);
 	(*stack_source)->top = (*stack_source)->top->prev;
 	if ((*stack_source)->top != NULL)
@@ -36,14 +36,14 @@ void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 
 void	swap(t_stack **stack_source, char *message)
 {
-	t_node *temp;
+	t_node	*temp;
 
-	if(!(*stack_source))
-		return;
-	if((*stack_source)->top->prev == NULL)
-		return;
+	if (!(*stack_source))
+		return ;
+	if ((*stack_source)->top->prev == NULL)
+		return ;
 	temp = dup_node((*stack_source)->top);
-	if(temp == NULL)
+	if (temp == NULL)
 		exit_status(6, NULL);
 	(*stack_source)->top = (*stack_source)->top->prev;
 	(*stack_source)->top->next = NULL;
@@ -59,19 +59,19 @@ void	swap(t_stack **stack_source, char *message)
 	ft_printf("s%s\n", message);
 }
 
-void rotate(t_stack **stack_source, char *message)
+void	rotate(t_stack **stack_source, char *message)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = dup_node((*stack_source)->top);
-	if(temp == NULL)
+	if (temp == NULL)
 		exit_status(6, NULL);
-	while((*stack_source)->top->prev != NULL)
+	while ((*stack_source)->top->prev != NULL)
 		(*stack_source)->top = (*stack_source)->top->prev;
 	temp->next = (*stack_source)->top;
 	temp->prev = NULL;
 	(*stack_source)->top->prev = temp;
-	while((*stack_source)->top->next != NULL)
+	while ((*stack_source)->top->next != NULL)
 		(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top = (*stack_source)->top->prev;
 	(*stack_source)->top->next = NULL;
@@ -80,16 +80,16 @@ void rotate(t_stack **stack_source, char *message)
 
 void	reverse_rotate(t_stack **stack_source, char *message)
 {
-	t_node *temp;
+	t_node	*temp;
 
-	while((*stack_source)->top->prev != NULL)
+	while ((*stack_source)->top->prev != NULL)
 		(*stack_source)->top = (*stack_source)->top->prev;
 	temp = dup_node((*stack_source)->top);
-	if(temp == NULL)
+	if (temp == NULL)
 		exit_status(6, NULL);
 	(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top->prev = NULL;
-	while((*stack_source)->top->next != NULL)
+	while ((*stack_source)->top->next != NULL)
 		(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top->next = temp;
 	temp->next = NULL;
@@ -98,9 +98,9 @@ void	reverse_rotate(t_stack **stack_source, char *message)
 	ft_printf("rr%s\n", message);
 }
 
-t_node *dup_node(t_node *node_source)
+t_node	*dup_node(t_node *node_source)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = malloc(sizeof(t_node));
 	temp->value = node_source->value;
@@ -111,5 +111,5 @@ t_node *dup_node(t_node *node_source)
 	temp->cost_move = node_source->cost_move;
 	temp->prev = node_source->prev;
 	temp->next = node_source->next;
-	return(temp);
+	return (temp);
 }

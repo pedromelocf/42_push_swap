@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 15:30:11 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:15:40 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	update_position(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	t_node *temp = stack_a->top;
+	int		i;
+	t_node	*temp;
 
+	temp = stack_a->top;
 	i = 1;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
 		temp->pos_a = i;
 		temp->pos_b = 0;
@@ -28,7 +29,7 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 	stack_a->amount_of_numbers = i - 1;
 	i = 1;
 	temp = stack_b->top;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
 		temp->pos_b = i;
 		temp->pos_a = 0;
@@ -40,10 +41,10 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 
 void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = stack_b->top;
-	while(temp)
+	while (temp)
 	{
 		temp->target_pos = get_target_pos(stack_a, temp->index);
 		temp = temp->prev;
@@ -52,14 +53,14 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 
 int	get_target_pos(t_stack *stack_a, int b_index)
 {
-	int target_posi;
-	int target_index;
-	t_node *temp_a;
+	int		target_posi;
+	int		target_index;
+	t_node	*temp_a;
 
 	target_posi = -1;
 	temp_a = stack_a->top;
 	target_index = INT_MAX;
-	while(temp_a)
+	while (temp_a)
 	{
 		if (temp_a->index > b_index && temp_a->index < target_index)
 		{
@@ -69,8 +70,8 @@ int	get_target_pos(t_stack *stack_a, int b_index)
 		temp_a = temp_a->prev;
 	}
 	if (target_posi == -1)
-		return(get_smaller_index_pos(stack_a));
-	return(target_posi);
+		return (get_smaller_index_pos(stack_a));
+	return (target_posi);
 }
 
 int	get_smaller_index_pos(t_stack *stack_a)
@@ -97,46 +98,49 @@ int	get_smaller_index_pos(t_stack *stack_a)
 
 void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
+	t_node	*temp;
 
-	t_node *temp = stack_b->top;
+	temp = stack_b->top;
 	x = stack_b->amount_of_numbers / 2;
 	if (x * 2 != stack_b->amount_of_numbers)
 		x++;
 	y = stack_a->amount_of_numbers / 2;
 	if (y * 2 != stack_a->amount_of_numbers)
 		y++;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
-		if(temp->pos_b <= x)
+		if (temp->pos_b <= x)
 			temp->cost_move = temp->pos_b - 1;
 		else
 			temp->cost_move = 1 + stack_b->amount_of_numbers - temp->pos_b;
-		if(temp->target_pos <= y)
+		if (temp->target_pos <= y)
 			temp->cost_move += temp->target_pos - 1;
 		else
-			temp->cost_move += 1 + stack_a->amount_of_numbers - temp->target_pos;
+			temp->cost_move += 1 + stack_a->amount_of_numbers
+				- temp->target_pos;
 		temp = temp->prev;
 	}
 }
 
 void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 {
-	int lower_cost;
-	int lower_cost_pos;
-	t_node *temp = (*stack_b)->top;
+	int		lower_cost;
+	int		lower_cost_pos;
+	t_node	*temp;
 
+	temp = (*stack_b)->top;
 	lower_cost = temp->cost_move;
 	lower_cost_pos = 1;
 	if (lower_cost == 0)
 	{
 		push(stack_b, stack_a, "a");
-		return;
+		return ;
 	}
-	while(temp != NULL)
+	while (temp != NULL)
 	{
-		if(lower_cost > temp->cost_move)
+		if (lower_cost > temp->cost_move)
 		{
 			lower_cost = temp->cost_move;
 			lower_cost_pos = temp->pos_b;
@@ -146,14 +150,14 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 	execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost);
 }
 
-
-void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int lower_cost)
+void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos,
+		int lower_cost)
 {
-	int x;
-	int y;
-	int new_cost;
-	int rotates;
-	int reverse_rotates;
+	int	x;
+	int	y;
+	int	new_cost;
+	int	rotates;
+	int	reverse_rotates;
 
 	x = (*stack_b)->amount_of_numbers / 2;
 	if (x * 2 != (*stack_b)->amount_of_numbers)
@@ -165,7 +169,7 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	{
 		rotates = lower_cost_pos - 1;
 		new_cost = lower_cost - rotates;
-		while(rotates > 0)
+		while (rotates > 0)
 		{
 			rotate(stack_b, "b");
 			rotates--;
@@ -175,7 +179,7 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	{
 		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost_pos + 1;
 		new_cost = lower_cost - reverse_rotates;
-		while(reverse_rotates > 0)
+		while (reverse_rotates > 0)
 		{
 			reverse_rotate(stack_b, "b");
 			reverse_rotates--;
@@ -184,7 +188,7 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	if ((*stack_b)->top->target_pos <= y)
 	{
 		rotates = new_cost;
-		while(rotates > 0)
+		while (rotates > 0)
 		{
 			rotate(stack_a, "a");
 			rotates--;
@@ -193,7 +197,7 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	else
 	{
 		reverse_rotates = new_cost;
-		while(reverse_rotates > 0)
+		while (reverse_rotates > 0)
 		{
 			reverse_rotate(stack_a, "a");
 			reverse_rotates--;
@@ -204,19 +208,19 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 
 void	validate_rotates(t_stack **stack_a)
 {
-	int y;
-	int i;
+	int	y;
+	int	i;
 
 	i = 1;
-	y =(*stack_a)->amount_of_numbers / 2;
-	if (y * 2 !=(*stack_a)->amount_of_numbers)
+	y = (*stack_a)->amount_of_numbers / 2;
+	if (y * 2 != (*stack_a)->amount_of_numbers)
 		y++;
-	while((*stack_a)->top->index != 1)
+	while ((*stack_a)->top->index != 1)
 	{
 		i++;
 		(*stack_a)->top = (*stack_a)->top->prev;
 	}
-	while((*stack_a)->top->next != NULL)
+	while ((*stack_a)->top->next != NULL)
 		(*stack_a)->top = (*stack_a)->top->next;
 	if (i <= y)
 	{
@@ -235,4 +239,3 @@ void	validate_rotates(t_stack **stack_a)
 		}
 	}
 }
-

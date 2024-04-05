@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 00:51:37 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:15:22 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	main(int argc, char **argv)
 	int		*arr_int;
 	int		index;
 	t_btree	*btree;
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	index = 1;
 	if (validate_arg(argc, argv, &arr_int))
@@ -34,4 +34,3 @@ int	main(int argc, char **argv)
 	algorithm(&stack_a, &stack_b);
 	return (0);
 }
-

@@ -6,14 +6,14 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/03 12:53:30 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:15:31 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
-			int *arr_int)
+		int *arr_int)
 {
 	*stack_a = NULL;
 	*stack_b = NULL;
@@ -30,12 +30,12 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 
 void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 {
-	int stack_size;
+	int	stack_size;
 	int	index;
 
 	stack_size = btree->amount_of_numbers;
 	(*stack_a)->amount_of_numbers = stack_size;
-	while(stack_size > 0)
+	while (stack_size > 0)
 	{
 		index = search_index(arr_int[stack_size], btree);
 		push_top(stack_a, index, stack_size, arr_int[stack_size]);
@@ -43,9 +43,9 @@ void	insert_stack_nodes(t_stack **stack_a, t_btree *btree, int *arr_int)
 	}
 }
 
-int		search_index(int value, t_btree *btree)
+int	search_index(int value, t_btree *btree)
 {
-	while(btree)
+	while (btree)
 	{
 		if (btree->value == value)
 			return (btree->index);
@@ -54,12 +54,12 @@ int		search_index(int value, t_btree *btree)
 		else
 			btree = btree->right;
 	}
-	return(1);
+	return (1);
 }
 
 void	push_top(t_stack **stack, int index, int pos, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
@@ -71,7 +71,7 @@ void	push_top(t_stack **stack, int index, int pos, int value)
 	new_node->target_pos = 0;
 	new_node->cost_move = 0;
 	new_node->next = NULL;
-	if(!(*stack)->top)
+	if (!(*stack)->top)
 	{
 		new_node->prev = NULL;
 		(*stack)->top = new_node;

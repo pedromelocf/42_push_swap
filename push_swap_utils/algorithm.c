@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 11:37:38 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:15:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ void	algorithm(t_stack **stack_a, t_stack **stack_b)
 		sort_greater_than_3(stack_a, stack_b);
 }
 
-void sort_3(t_stack **stack_a)
+void	sort_3(t_stack **stack_a)
 {
 	if ((*stack_a)->top->index > (*stack_a)->top->prev->index)
 	{
-		if((*stack_a)->top->prev->index > (*stack_a)->top->prev->prev->index)
+		if ((*stack_a)->top->prev->index > (*stack_a)->top->prev->prev->index)
 		{
 			rotate(stack_a, "a");
 			swap(stack_a, "a");
 		}
 		else
 		{
-			if((*stack_a)->top->index > (*stack_a)->top->prev->prev->index)
+			if ((*stack_a)->top->index > (*stack_a)->top->prev->prev->index)
 				rotate(stack_a, "a");
 			else
 				swap(stack_a, "a");
@@ -41,7 +41,7 @@ void sort_3(t_stack **stack_a)
 	}
 	else
 	{
-		if((*stack_a)->top->index > (*stack_a)->top->prev->prev->index)
+		if ((*stack_a)->top->index > (*stack_a)->top->prev->prev->index)
 			reverse_rotate(stack_a, "a");
 		else
 		{
@@ -50,7 +50,6 @@ void sort_3(t_stack **stack_a)
 		}
 	}
 }
-
 
 void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 {
@@ -69,17 +68,18 @@ void	sort_greater_than_3(t_stack **stack_a, t_stack **stack_b)
 	validate_rotates(stack_a);
 }
 
-void	push_b_until_three (t_stack *stack_a, t_stack *stack_b)
+void	push_b_until_three(t_stack *stack_a, t_stack *stack_b)
 {
-	int	i;
-	int	p;
-	int	x;
-	t_node *temp = stack_a->top;
+	int		i;
+	int		p;
+	int		x;
+	t_node	*temp;
 
+	temp = stack_a->top;
 	i = 0;
 	p = stack_a->amount_of_numbers / 3;
 	x = 0;
-	while(stack_a->amount_of_numbers - 3 > i)
+	while (stack_a->amount_of_numbers - 3 > i)
 	{
 		x -= i;
 		p *= 2;
@@ -90,7 +90,7 @@ void	push_b_until_three (t_stack *stack_a, t_stack *stack_b)
 				push(&stack_a, &stack_b, "b");
 				i++;
 				if (i == stack_a->amount_of_numbers - 3)
-					break;
+					break ;
 			}
 			else
 				rotate(&stack_a, "a");
@@ -100,4 +100,3 @@ void	push_b_until_three (t_stack *stack_a, t_stack *stack_b)
 		temp = stack_a->top;
 	}
 }
-
