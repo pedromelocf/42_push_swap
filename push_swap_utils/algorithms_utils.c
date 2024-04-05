@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 13:11:38 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:12:24 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,59 @@ void	update_position(t_stack *stack_a, t_stack *stack_b)
 
 void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
+	t_node *temp;
 
-	t_node *temp_a = stack_a->top;
-	t_node *temp_b = stack_b->top;
-	while(temp_b != NULL)
+	temp = stack_b->top;
+	while(temp)
 	{
-		i = 1;
-		if(temp_b->index < temp_a->index)
-			temp_b->target_pos = 1;
-		else
-		{
-			while(temp_b->index > temp_a->index)
-			{
-				i++;
-				temp_a = temp_a->prev;
-				if (i == stack_a->amount_of_numbers)
-					break;
-			}
-			if (i == stack_a->amount_of_numbers)
-				temp_b->target_pos = 1;
-			else
-				temp_b->target_pos = i;
-		}
-		temp_b = temp_b->prev;
-		temp_a = stack_a->top;
+		temp->target_pos = get_target_pos(stack_a, temp->index);
+		temp = temp->prev;
 	}
+}
+
+int	get_target_pos(t_stack *stack_a, int b_index)
+{
+	int target_posi;
+	int target_index;
+	t_node *temp_a;
+
+	target_posi = -1;
+	temp_a = stack_a->top;
+	target_index = INT_MAX;
+	while(temp_a)
+	{
+		if (temp_a->index > b_index && temp_a->index < target_index)
+		{
+			target_index = temp_a->index;
+			target_posi = temp_a->pos_a;
+		}
+		temp_a = temp->prev;
+	}
+	if (target_posi == -1)
+		return(get_smaller_index_pos(stack_a));
+	return(target_posi);
+}
+
+int	get_smaller_index_pos(t_stack *stack_a)
+{
+	int		smaller_index;
+	t_node	*temp;
+	t_node	*temp_top;
+
+	temp = stack_a->top;
+	temp_top = stack_a->top;
+	smaller_index = stack_a->top->index;
+	while (stack_a->top)
+	{
+		if (stack_a->top->index < smaller_index)
+		{
+			smaller_index = stack_a->top->index;
+			temp = stack_a->top;
+		}
+		stack_a->top = stack_a->top->prev;
+	}
+	stack_a->top = temp_top;
+	return (temp->pos_a);
 }
 
 void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
@@ -86,7 +113,7 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 			temp->cost_move = temp->pos_b - 1;
 		else
 			temp->cost_move = 1 + stack_b->amount_of_numbers - temp->pos_b;
-		if(stack_b->top->target_pos <= y)
+		if(temp->target_pos <= y)
 			temp->cost_move += temp->target_pos - 1;
 		else
 			temp->cost_move += 1 + stack_a->amount_of_numbers - temp->target_pos;
@@ -137,24 +164,24 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	if (lower_cost_pos <= x)
 	{
 		rotates = lower_cost_pos - 1;
+		new_cost = lower_cost - rotates;
 		while(rotates > 0)
 		{
 			rotate(stack_b, "b");
 			rotates--;
 		}
-		new_cost = lower_cost - rotates;
 	}
 	else
 	{
-		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost;
+		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost_pos;
+		new_cost = lower_cost - reverse_rotates - 1;
 		while(reverse_rotates > 0)
 		{
 			reverse_rotate(stack_b, "b");
 			reverse_rotates--;
 		}
-		new_cost = lower_cost - reverse_rotates;
 	}
-	if (new_cost <= y)
+	if ((*stack_b)->top->target_pos <= y)
 	{
 		rotates = new_cost;
 		while(rotates > 0)

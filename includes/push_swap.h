@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/04 00:51:32 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 00:19:26 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,7 @@ void				make_cheapest(t_stack **stack_a, t_stack **stack_b);
 void				validate_rotates(t_stack **stack_a);
 void 				execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int lower_cost);
 int					get_stack_size(t_stack *stack_source);
+int					get_target_pos(t_stack *stack_a, int b_index);
+int					get_smaller_index_pos(t_stack *stack_a);
+
 #endif
