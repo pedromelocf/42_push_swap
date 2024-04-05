@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 11:25:00 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/05 15:30:11 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 		push(stack_b, stack_a, "a");
 		return;
 	}
-	while(temp->prev != NULL)
+	while(temp != NULL)
 	{
 		if(lower_cost > temp->cost_move)
 		{
@@ -173,8 +173,8 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos, int
 	}
 	else
 	{
-		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost_pos;
-		new_cost = lower_cost - reverse_rotates - 1;
+		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost_pos + 1;
+		new_cost = lower_cost - reverse_rotates;
 		while(reverse_rotates > 0)
 		{
 			reverse_rotate(stack_b, "b");
