@@ -18,8 +18,7 @@ PUSH_SWAP_SRCS = main.c \
 	exit_status.c \
 	algorithm.c \
 	operations.c \
-	algorithms_utils.c \
-	algorithms_utils2.c
+	algorithms_utils.c
 
 #FLAGS
 FLAGS = -Wall -Werror -Wextra
