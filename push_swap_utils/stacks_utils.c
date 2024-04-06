@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 11:37:29 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 11:51:39 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	push_top(t_stack **stack, int index, int pos, int value)
 	else
 	{
 		new_node->prev = (*stack)->top;
+		(*stack)->top->next = new_node;
 		(*stack)->top = new_node;
 	}
 }
