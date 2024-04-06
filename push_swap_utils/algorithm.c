@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 13:31:27 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 14:06:01 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,33 @@ void	push_b_until_three(t_stack *stack_a, t_stack *stack_b)
 
 	temp = stack_a->top;
 	i = 0;
+	x = 0;
 	p = stack_a->amount_of_numbers / 5;
 	if (p == 0)
 		p = 1;
-	x = 0;
 	while (stack_a->amount_of_numbers - 3 > i)
 	{
 		x -= i;
 		p *= 2;
-		while (stack_a->amount_of_numbers > x)
+		while (stack_a->amount_of_numbers > x++)
 		{
-			if (temp->index <= p)
-			{
-				push(&stack_a, &stack_b, "b");
-				i++;
-				if (i == stack_a->amount_of_numbers - 3)
-					break ;
-			}
-			else
-				rotate(&stack_a, "a");
+			i += push_three_aux(stack_a, stack_b, temp->index, p);
+			if (i == stack_a->amount_of_numbers - 3)
+				break ;
 			temp = temp->prev;
-			x++;
 		}
 		temp = stack_a->top;
 	}
+}
+
+int	push_three_aux(t_stack *stack_a, t_stack *stack_b, int index, int p)
+{
+	if (index <= p)
+	{
+		push(&stack_a, &stack_b, "b");
+		return(1);
+	}
+	else
+		rotate(&stack_a, "a");
+	return(0);
 }
