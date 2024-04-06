@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 17:46:24 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 11:07:40 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 	*stack_a = malloc(sizeof(t_stack));
 	if (!*stack_a)
 		exit_status(4, "Error creating stack");
+	(*stack_a)->top = NULL;
 	*stack_b = malloc(sizeof(t_stack));
 	if (!*stack_b)
 		exit_status(4, "Error creating stack");
+	(*stack_b)->top = NULL;
 	insert_stack_nodes(stack_a, *btree, arr_int);
 	clean_tree(*btree);
 	ft_clean_arr_int(arr_int);
@@ -87,12 +89,15 @@ void	push_top(t_stack **stack, int index, int pos, int value)
 void	clean_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*temp;
+	int i;
 
-	while (stack_a->top)
+	i = 1;
+	while (stack_a->amount_of_numbers >= i)
 	{
 		temp = stack_a->top;
 		stack_a->top = stack_a->top->prev;
 		free(temp);
+		i++;
 	}
 	free(stack_a);
 	free(stack_b);
