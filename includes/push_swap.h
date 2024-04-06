@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 14:04:45 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 19:07:07 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ void				make_cheapest(t_stack **stack_a, t_stack **stack_b);
 void				validate_rotates(t_stack **stack_a);
 void				execute_moves(t_stack **stack_a, t_stack **stack_b,
 						int lower_cost_pos, int lower_cost);
+
+int	execute_stackb_moves(int lower_cost_pos, int lower_cost, t_stack *stack_b);
+void	execute_stacka_moves(int new_cost, int target_pos_b, t_stack *stack_a);
+
 int					get_target_pos(t_stack *stack_a, int b_index);
 int					get_smaller_index_pos(t_stack *stack_a);
 void				clean_stacks(t_stack *stack_a, t_stack *stack_b);

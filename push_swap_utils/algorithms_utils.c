@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 13:53:03 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:42:34 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,77 +123,6 @@ void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
 		temp = temp->prev;
 	}
 }
-
-void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
-{
-	int		lower_cost;
-	int		lower_cost_pos;
-	t_node	*temp;
-
-	temp = (*stack_b)->top;
-	lower_cost = temp->cost_move;
-	lower_cost_pos = 1;
-	if (lower_cost == 0)
-	{
-		push(stack_b, stack_a, "a");
-		return ;
-	}
-	while (temp != NULL)
-	{
-		if (lower_cost > temp->cost_move)
-		{
-			lower_cost = temp->cost_move;
-			lower_cost_pos = temp->pos_b;
-		}
-		temp = temp->prev;
-	}
-	execute_moves(stack_a, stack_b, lower_cost_pos, lower_cost);
-}
-
-void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos,
-		int lower_cost)
-{
-	int	x;
-	int	y;
-	int	new_cost;
-	int	rotates;
-	int	reverse_rotates;
-
-	x = (*stack_b)->amount_of_numbers / 2;
-	if (x * 2 != (*stack_b)->amount_of_numbers)
-		x++;
-	y = (*stack_a)->amount_of_numbers / 2;
-	if (y * 2 != (*stack_a)->amount_of_numbers)
-		y++;
-	if (lower_cost_pos <= x)
-	{
-		rotates = lower_cost_pos - 1;
-		new_cost = lower_cost - rotates;
-		while (rotates-- > 0)
-			rotate(stack_b, "b");
-	}
-	else
-	{
-		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost_pos + 1;
-		new_cost = lower_cost - reverse_rotates;
-		while (reverse_rotates-- > 0)
-			reverse_rotate(stack_b, "b");
-	}
-	if ((*stack_b)->top->target_pos <= y)
-	{
-		rotates = new_cost;
-		while (rotates-- > 0)
-			rotate(stack_a, "a");
-	}
-	else
-	{
-		reverse_rotates = new_cost;
-		while (reverse_rotates-- > 0)
-			reverse_rotate(stack_a, "a");
-	}
-	push(stack_b, stack_a, "a");
-}
-
 
 void	validate_rotates(t_stack **stack_a)
 {
