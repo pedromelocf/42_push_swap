@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 17:15:38 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 13:31:27 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void	push_b_until_three(t_stack *stack_a, t_stack *stack_b)
 
 	temp = stack_a->top;
 	i = 0;
-	p = stack_a->amount_of_numbers / 3;
+	p = stack_a->amount_of_numbers / 5;
+	if (p == 0)
+		p = 1;
 	x = 0;
 	while (stack_a->amount_of_numbers - 3 > i)
 	{

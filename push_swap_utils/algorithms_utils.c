@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 17:15:40 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/06 13:53:03 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,42 +169,31 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos,
 	{
 		rotates = lower_cost_pos - 1;
 		new_cost = lower_cost - rotates;
-		while (rotates > 0)
-		{
+		while (rotates-- > 0)
 			rotate(stack_b, "b");
-			rotates--;
-		}
 	}
 	else
 	{
 		reverse_rotates = (*stack_b)->amount_of_numbers - lower_cost_pos + 1;
 		new_cost = lower_cost - reverse_rotates;
-		while (reverse_rotates > 0)
-		{
+		while (reverse_rotates-- > 0)
 			reverse_rotate(stack_b, "b");
-			reverse_rotates--;
-		}
 	}
 	if ((*stack_b)->top->target_pos <= y)
 	{
 		rotates = new_cost;
-		while (rotates > 0)
-		{
+		while (rotates-- > 0)
 			rotate(stack_a, "a");
-			rotates--;
-		}
 	}
 	else
 	{
 		reverse_rotates = new_cost;
-		while (reverse_rotates > 0)
-		{
+		while (reverse_rotates-- > 0)
 			reverse_rotate(stack_a, "a");
-			reverse_rotates--;
-		}
 	}
 	push(stack_b, stack_a, "a");
 }
+
 
 void	validate_rotates(t_stack **stack_a)
 {
@@ -217,25 +206,20 @@ void	validate_rotates(t_stack **stack_a)
 		y++;
 	while ((*stack_a)->top->index != 1)
 	{
-		i++;
 		(*stack_a)->top = (*stack_a)->top->prev;
+		i++;
 	}
 	while ((*stack_a)->top->next != NULL)
 		(*stack_a)->top = (*stack_a)->top->next;
 	if (i <= y)
 	{
-		while (i > 1)
-		{
+		while (i-- > 1)
 			rotate(stack_a, "a");
-			i--;
-		}
 	}
 	else
 	{
-		while ((*stack_a)->amount_of_numbers - i >= 0)
-		{
+		while ((*stack_a)->amount_of_numbers - i++ >= 0)
 			reverse_rotate(stack_a, "a");
-			i++;
-		}
 	}
 }
+
