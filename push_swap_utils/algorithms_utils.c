@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 18:42:34 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:28:16 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,3 @@ void	validate_rotates(t_stack **stack_a)
 			reverse_rotate(stack_a, "a");
 	}
 }
-

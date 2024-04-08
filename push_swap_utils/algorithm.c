@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:16:02 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 14:06:01 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:28:29 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int	push_three_aux(t_stack *stack_a, t_stack *stack_b, int index, int p)
 	if (index <= p)
 	{
 		push(&stack_a, &stack_b, "b");
-		return(1);
+		return (1);
 	}
 	else
 		rotate(&stack_a, "a");
-	return(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:29:58 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 19:07:07 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:28:41 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void				algorithm(t_stack **stack_a, t_stack **stack_b);
 void				sort_3(t_stack **stack_a);
 void				sort_greater_than_3(t_stack **stack_a, t_stack **stack_b);
 void				push_b_until_three(t_stack *stack_a, t_stack *stack_b);
-int					push_three_aux(t_stack *stack_a, t_stack *stack_b, int index, int p);
+int					push_three_aux(t_stack *stack_a, t_stack *stack_b,
+						int index, int p);
 void				push(t_stack **stack_source, t_stack **stack_dest,
 						char *message);
 void				swap(t_stack **stack_source, char *message);
@@ -78,10 +79,10 @@ void				make_cheapest(t_stack **stack_a, t_stack **stack_b);
 void				validate_rotates(t_stack **stack_a);
 void				execute_moves(t_stack **stack_a, t_stack **stack_b,
 						int lower_cost_pos, int lower_cost);
-
-int	execute_stackb_moves(int lower_cost_pos, int lower_cost, t_stack *stack_b);
-void	execute_stacka_moves(int new_cost, int target_pos_b, t_stack *stack_a);
-
+int					execute_stackb_moves(int lower_cost_pos, int lower_cost,
+						t_stack *stack_b);
+void				execute_stacka_moves(int new_cost, int target_pos_b,
+						t_stack *stack_a);
 int					get_target_pos(t_stack *stack_a, int b_index);
 int					get_smaller_index_pos(t_stack *stack_a);
 void				clean_stacks(t_stack *stack_a, t_stack *stack_b);

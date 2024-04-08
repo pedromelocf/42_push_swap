@@ -6,12 +6,11 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 18:40:15 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 19:06:29 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:28:04 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 void	make_cheapest(t_stack **stack_a, t_stack **stack_b)
 {
@@ -52,9 +51,9 @@ void	execute_moves(t_stack **stack_a, t_stack **stack_b, int lower_cost_pos,
 int	execute_stackb_moves(int lower_cost_pos, int lower_cost, t_stack *stack_b)
 {
 	int	x;
-	int rotates;
-	int reverse_rotates;
-	int new_cost;
+	int	rotates;
+	int	reverse_rotates;
+	int	new_cost;
 
 	x = stack_b->amount_of_numbers / 2;
 	if (x * 2 != stack_b->amount_of_numbers)
@@ -73,7 +72,7 @@ int	execute_stackb_moves(int lower_cost_pos, int lower_cost, t_stack *stack_b)
 		while (reverse_rotates-- > 0)
 			reverse_rotate(&stack_b, "b");
 	}
-	return(new_cost);
+	return (new_cost);
 }
 
 void	execute_stacka_moves(int new_cost, int target_pos_b, t_stack *stack_a)
