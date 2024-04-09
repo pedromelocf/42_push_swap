@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/09 12:53:09 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:00:38 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 {
-	t_node	*temp;
+	t_node	*top_a;
+	t_node	*top_b;
+	t_node	*old_top_b;
 
 	if (!(*stack_source))
 		return ;
-	temp = (*stack_source)->top;
-	(*stack_source)->top = (*stack_source)->top->prev;
-	if ((*stack_source)->top != NULL)
-		(*stack_source)->top->next = NULL;
-	if ((*stack_dest)->top == NULL)
-		temp->prev = NULL;
+	top_a = (*stack_source)->top->prev;
+	top_b = (*stack_source)->top;
+	old_top_b = (*stack_dest)->top;
+	if (top_a != NULL)
+		top_a->next = NULL;
+	if (old_top_b == NULL)
+		top_b->prev = NULL;
 	else
 	{
-		(*stack_dest)->top->next = temp;
-		temp->prev = (*stack_dest)->top;
+		old_top_b->next = top_b;
+		top_b->prev = old_top_b;
 	}
-	(*stack_dest)->top = temp;
+	(*stack_dest)->top = top_b;
+	(*stack_source)->top = top_a;
 	ft_printf("p%s\n", message);
 }
 
