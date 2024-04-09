@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/08 13:05:59 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:06:20 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,27 @@ void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 
 void	swap(t_stack **stack_source, char *message)
 {
-	t_node	*temp;
+	t_node	*old_top;
+	t_node	*new_top;
 
 	if (!(*stack_source))
 		return ;
 	if ((*stack_source)->top->prev == NULL)
 		return ;
-	temp = (*stack_source)->top;
-	(*stack_source)->top = (*stack_source)->top->prev;
-	(*stack_source)->top->next = NULL;
-	if ((*stack_source)->top->prev)
+	old_top = (*stack_source)->top;
+	new_top = (*stack_source)->top;
+	new_top = new_top->prev;
+	new_top->next = NULL;
+	if (new_top->prev)
 	{
-		(*stack_source)->top->prev->next = temp;
-		temp->prev = (*stack_source)->top->prev;
+		new_top->prev->next = old_top;
+		old_top->prev = new_top->prev;
 	}
 	else
-		temp->prev = NULL;
-	temp->next = (*stack_source)->top;
-	(*stack_source)->top->prev = temp;
+		old_top->prev = NULL;
+	old_top->next = new_top;
+	new_top->prev = old_top;
+	(*stack_source)->top = new_top;
 	ft_printf("s%s\n", message);
 }
 
