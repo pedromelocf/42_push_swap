@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:14:34 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/08 11:28:16 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:47:18 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,34 @@ void	calc_target_pos(t_stack *stack_a, t_stack *stack_b)
 	while (temp)
 	{
 		temp->target_pos = get_target_pos(stack_a, temp->index);
+		temp = temp->prev;
+	}
+}
+
+void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
+{
+	int		x;
+	int		y;
+	t_node	*temp;
+
+	temp = stack_b->top;
+	x = stack_b->amount_of_numbers / 2;
+	if (x * 2 != stack_b->amount_of_numbers)
+		x++;
+	y = stack_a->amount_of_numbers / 2;
+	if (y * 2 != stack_a->amount_of_numbers)
+		y++;
+	while (temp != NULL)
+	{
+		if (temp->pos_b <= x)
+			temp->cost_move = temp->pos_b - 1;
+		else
+			temp->cost_move = 1 + stack_b->amount_of_numbers - temp->pos_b;
+		if (temp->target_pos <= y)
+			temp->cost_move += temp->target_pos - 1;
+		else
+			temp->cost_move += 1 + stack_a->amount_of_numbers
+				- temp->target_pos;
 		temp = temp->prev;
 	}
 }
@@ -94,60 +122,4 @@ int	get_smaller_index_pos(t_stack *stack_a)
 	}
 	stack_a->top = temp_top;
 	return (temp->pos_a);
-}
-
-void	get_move_cost(t_stack *stack_a, t_stack *stack_b)
-{
-	int		x;
-	int		y;
-	t_node	*temp;
-
-	temp = stack_b->top;
-	x = stack_b->amount_of_numbers / 2;
-	if (x * 2 != stack_b->amount_of_numbers)
-		x++;
-	y = stack_a->amount_of_numbers / 2;
-	if (y * 2 != stack_a->amount_of_numbers)
-		y++;
-	while (temp != NULL)
-	{
-		if (temp->pos_b <= x)
-			temp->cost_move = temp->pos_b - 1;
-		else
-			temp->cost_move = 1 + stack_b->amount_of_numbers - temp->pos_b;
-		if (temp->target_pos <= y)
-			temp->cost_move += temp->target_pos - 1;
-		else
-			temp->cost_move += 1 + stack_a->amount_of_numbers
-				- temp->target_pos;
-		temp = temp->prev;
-	}
-}
-
-void	validate_rotates(t_stack **stack_a)
-{
-	int	y;
-	int	i;
-
-	i = 1;
-	y = (*stack_a)->amount_of_numbers / 2;
-	if (y * 2 != (*stack_a)->amount_of_numbers)
-		y++;
-	while ((*stack_a)->top->index != 1)
-	{
-		(*stack_a)->top = (*stack_a)->top->prev;
-		i++;
-	}
-	while ((*stack_a)->top->next != NULL)
-		(*stack_a)->top = (*stack_a)->top->next;
-	if (i <= y)
-	{
-		while (i-- > 1)
-			rotate(stack_a, "a");
-	}
-	else
-	{
-		while ((*stack_a)->amount_of_numbers - i++ >= 0)
-			reverse_rotate(stack_a, "a");
-	}
 }

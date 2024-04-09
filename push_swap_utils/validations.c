@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:34:05 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 17:15:42 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:45:33 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,32 @@ int	check_stack_is_sorted(t_stack *stack_a)
 		i++;
 	}
 	return (1);
+}
+
+void	validate_rotates(t_stack **stack_a)
+{
+	int	y;
+	int	i;
+
+	i = 1;
+	y = (*stack_a)->amount_of_numbers / 2;
+	if (y * 2 != (*stack_a)->amount_of_numbers)
+		y++;
+	while ((*stack_a)->top->index != 1)
+	{
+		(*stack_a)->top = (*stack_a)->top->prev;
+		i++;
+	}
+	while ((*stack_a)->top->next != NULL)
+		(*stack_a)->top = (*stack_a)->top->next;
+	if (i <= y)
+	{
+		while (i-- > 1)
+			rotate(stack_a, "a");
+	}
+	else
+	{
+		while ((*stack_a)->amount_of_numbers - i++ >= 0)
+			reverse_rotate(stack_a, "a");
+	}
 }

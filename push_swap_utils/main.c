@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:53:46 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/05 17:46:23 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:55:05 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	main(int argc, char **argv)
 	inorder_transversal(&btree, &index);
 	init_stacks(&stack_a, &stack_b, &btree, arr_int);
 	if (check_stack_is_sorted(stack_a))
-		exit_status(7, NULL);
+	{
+		clean_stacks(stack_a, stack_b);
+		exit_status(6, NULL);
+	}
 	algorithm(&stack_a, &stack_b);
 	clean_stacks(stack_a, stack_b);
 	return (0);

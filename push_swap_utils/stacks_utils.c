@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/06 11:51:39 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:58:51 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, t_btree **btree,
 	(*stack_a)->top = NULL;
 	*stack_b = malloc(sizeof(t_stack));
 	if (!*stack_b)
+	{
+		clean_stacks(*stack_a, *stack_b);
 		exit_status(4, "Error creating stack");
+	}
 	(*stack_b)->top = NULL;
 	insert_stack_nodes(stack_a, *btree, arr_int);
 	clean_tree(*btree);
@@ -65,7 +68,7 @@ void	push_top(t_stack **stack, int index, int pos, int value)
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		exit_status(6, "Error creating node");
+		exit_status(5, "Error creating node");
 	new_node->value = value;
 	new_node->index = index;
 	new_node->pos_a = pos;
@@ -96,6 +99,8 @@ void	clean_stacks(t_stack *stack_a, t_stack *stack_b)
 		stack_a->top = stack_a->top->prev;
 		free(temp);
 	}
-	free(stack_a);
-	free(stack_b);
+	if(stack_a)
+		free(stack_a);
+	if(stack_b)
+		free(stack_b);
 }

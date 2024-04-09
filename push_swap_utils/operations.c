@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/08 12:36:07 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/08 13:05:59 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 	(*stack_source)->top = (*stack_source)->top->prev;
 	if ((*stack_source)->top != NULL)
 		(*stack_source)->top->next = NULL;
-	temp->prev = NULL;
 	if ((*stack_dest)->top == NULL)
 		temp->prev = NULL;
 	else
@@ -43,8 +42,6 @@ void	swap(t_stack **stack_source, char *message)
 	if ((*stack_source)->top->prev == NULL)
 		return ;
 	temp = (*stack_source)->top;
-	if (temp == NULL)
-		exit_status(6, NULL);
 	(*stack_source)->top = (*stack_source)->top->prev;
 	(*stack_source)->top->next = NULL;
 	if ((*stack_source)->top->prev)
@@ -85,8 +82,6 @@ void	reverse_rotate(t_stack **stack_source, char *message)
 	while ((*stack_source)->top->prev != NULL)
 		(*stack_source)->top = (*stack_source)->top->prev;
 	temp = (*stack_source)->top;
-	if (temp == NULL)
-		exit_status(6, NULL);
 	(*stack_source)->top = (*stack_source)->top->next;
 	(*stack_source)->top->prev = NULL;
 	while ((*stack_source)->top->next != NULL)
