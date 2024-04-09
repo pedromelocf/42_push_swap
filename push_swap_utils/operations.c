@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/09 00:06:20 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/09 00:16:02 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,21 @@ void	rotate(t_stack **stack_source, char *message)
 
 void	reverse_rotate(t_stack **stack_source, char *message)
 {
-	t_node	*temp;
+	t_node	*new_top;
+	t_node	*old_top;
 
-	while ((*stack_source)->top->prev != NULL)
-		(*stack_source)->top = (*stack_source)->top->prev;
-	temp = (*stack_source)->top;
-	(*stack_source)->top = (*stack_source)->top->next;
-	(*stack_source)->top->prev = NULL;
-	while ((*stack_source)->top->next != NULL)
-		(*stack_source)->top = (*stack_source)->top->next;
-	(*stack_source)->top->next = temp;
-	temp->next = NULL;
-	temp->prev = (*stack_source)->top;
-	(*stack_source)->top = temp;
+	old_top = (*stack_source)->top;
+	while (old_top->prev != NULL)
+		old_top = old_top->prev;
+	new_top = old_top;
+	old_top = old_top->next;
+	old_top->prev = NULL;
+	while (old_top->next != NULL)
+		old_top = old_top->next;
+	old_top->next = new_top;
+	new_top->next = NULL;
+	new_top->prev = old_top;
+	(*stack_source)->top = new_top;
 	ft_printf("rr%s\n", message);
 }
 
