@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:25:55 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/08 17:58:51 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:20:48 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void	clean_stacks(t_stack *stack_a, t_stack *stack_b)
 		stack_a->top = stack_a->top->prev;
 		free(temp);
 	}
-	if(stack_a)
+	if (stack_a)
 		free(stack_a);
-	if(stack_b)
+	if (stack_b)
 		free(stack_b);
 }

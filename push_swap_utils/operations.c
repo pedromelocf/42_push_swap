@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/09 13:00:38 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:20:55 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 	(*stack_source)->top = top_a;
 	ft_printf("p%s\n", message);
 }
-
 
 void	swap(t_stack **stack_source, char *message)
 {
@@ -74,7 +73,7 @@ void	rotate(t_stack **stack_source, char *message)
 	old_top = (*stack_source)->top;
 	temp = old_top;
 	new_top = old_top->prev;
-	while(temp->prev)
+	while (temp->prev)
 		temp = temp->prev;
 	old_bottom = temp;
 	old_bottom->prev = old_top;
