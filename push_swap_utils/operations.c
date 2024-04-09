@@ -6,7 +6,7 @@
 /*   By: pmelo-ca <pmelo-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:43:08 by pmelo-ca          #+#    #+#             */
-/*   Updated: 2024/04/09 12:50:55 by pmelo-ca         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:53:09 by pmelo-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	push(t_stack **stack_source, t_stack **stack_dest, char *message)
 
 	if (!(*stack_source))
 		return ;
-	temp = dup_node((*stack_source)->top);
+	temp = (*stack_source)->top;
 	(*stack_source)->top = (*stack_source)->top->prev;
 	if ((*stack_source)->top != NULL)
 		(*stack_source)->top->next = NULL;
@@ -99,20 +99,4 @@ void	reverse_rotate(t_stack **stack_source, char *message)
 	new_top->prev = old_top;
 	(*stack_source)->top = new_top;
 	ft_printf("rr%s\n", message);
-}
-
-t_node	*dup_node(t_node *node_source)
-{
-	t_node	*temp;
-
-	temp = malloc(sizeof(t_node));
-	temp->value = node_source->value;
-	temp->index = node_source->index;
-	temp->pos_a = node_source->pos_a;
-	temp->pos_b = node_source->pos_b;
-	temp->target_pos = node_source->target_pos;
-	temp->cost_move = node_source->cost_move;
-	temp->prev = node_source->prev;
-	temp->next = node_source->next;
-	return (temp);
 }
