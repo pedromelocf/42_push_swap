@@ -13,7 +13,7 @@
 
  In push swap project, we are deply introduced to very important topics in software development as:
   
-• Time complexity in ordering algorithms;
+• Time complexity in sorting algorithms;
 
 • Data structures as LIFO (last in first out) and FIFO (first in first out). In our case, the two stacks that we are allowed to use are FIFO.
 
