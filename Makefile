@@ -1,9 +1,9 @@
 #LIBFT
-LIBFT_DIR = ./lib
-LIBFT_PATH = ./lib/libft/*.o ./lib/libft/*.a
-LIB_PATH = ./lib/*.a
-GNL_OBJ = ./lib/gnl/*.o
-PRINTF_OBJ = ./lib/printf/*.o
+LIBFT_DIR = ./libraries
+LIBFT_PATH = ./libraries/libft/*.o ./libraries/libft/*.a
+LIB_PATH = ./libraries/*.a
+GNL_OBJ = ./libraries/gnl/*.o
+PRINTF_OBJ = ./libraries/printf/*.o
 
 #PUSH_SWAP
 NAME = push_swap

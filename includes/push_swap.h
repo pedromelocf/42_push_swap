@@ -14,9 +14,9 @@
 
 # define PUSH_SWAP_H
 
-# include "../lib/gnl/get_next_line.h"
-# include "../lib/libft.h"
-# include "../lib/printf/ft_printf.h"
+# include "../libraries/gnl/get_next_line.h"
+# include "../libraries/libft.h"
+# include "../libraries/printf/ft_printf.h"
 
 typedef struct s_btree
 {
